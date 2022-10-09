@@ -11,6 +11,7 @@ module.exports = {
       grey: "#817d92",
       "dark-grey": "#24232c",
       "very-dark-grey": "#18171f",
+      transparent: "transparent",
     },
     extend: {},
   },

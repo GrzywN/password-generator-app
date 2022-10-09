@@ -3,30 +3,50 @@
 @tailwind utilities;
 
 @layer base {
-		html {
-		--color-neon-green: #a4ffaf;
-		--color-very-dark-grey: #18171f;
-		}
+  html {
+    --color-neon-green: #a4ffaf;
+    --color-very-dark-grey: #18171f;
+  }
 }
 
 @layer components {
-		.heading-l {
-				@apply font-mono font-bold text-[2rem] leading-[2.688rem];
-		}
+  .heading-l {
+    @apply font-mono font-bold text-[2rem] leading-[2.688rem];
+  }
 
-		.heading-m {
-				@apply font-mono font-bold text-2xl leading-[1.938rem];
-		}
+  .heading-m {
+    @apply font-mono font-bold text-2xl leading-[1.938rem];
+  }
 
-		.body-m {
-				@apply font-mono font-bold text-lg leading-[1.438rem];
-		}
+  .body-m {
+    @apply font-mono font-bold text-lg leading-[1.438rem];
+  }
 
-		.body-s {
-				@apply font-mono font-bold text-base leading-[1.312rem]
-		}
+  .body-s {
+    @apply font-mono font-bold text-base leading-[1.312rem];
+  }
 
-		input[type="range"] {
+  .input-range {
+    @apply appearance-none w-full bg-transparent;
+  }
 
-		}
+  .input-range::-webkit-slider-thumb {
+    @apply appearance-none;
+  }
+
+  .input-range::-webkit-slider-thumb {
+    @apply w-7 h-7 rounded-full border-none bg-almost-white;
+  }
+
+  .input-range::-moz-range-thumb {
+    @apply w-7 h-7 rounded-full border-none bg-almost-white;
+  }
+
+  .input-range:hover::-webkit-slider-thumb {
+    @apply bg-very-dark-grey outline-2 outline-neon-green/100 outline;
+  }
+
+  .input-range:hover::-moz-range-thumb {
+    @apply bg-very-dark-grey outline-2 outline-neon-green/100 outline;
+  }
 }

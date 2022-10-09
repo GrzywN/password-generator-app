@@ -16,18 +16,26 @@
       <div
         class="mt-4 h-16 bg-dark-grey px-4 flex justify-between items-center gap-4 md:mt-6 md:h-20 md:px-8 md:py-[1.188rem]"
       >
-        <h2 class="text-almost-white heading-m md:heading-l"> P4$5W0rD! </h2>
-        <button type="button" class="w-[17.0.312rem] h-5 md:w-[1.312rem] md:h-6">
-          <img class="object-cover" src="images/icon-copy.svg" alt="Copy the generated password" />
+        <h2 class="text-almost-white heading-m opacity-25 md:heading-l">P4$5W0rD!</h2>
+        <button
+          type="button"
+          class="w-[17.0.312rem] h-5 md:w-[1.312rem] md:h-6"
+          title="Copy to clipboard."
+        >
+          <img
+            class="object-cover"
+            src="images/icon-copy.svg"
+            alt="Copy the generated password to clipboard."
+          />
         </button>
       </div>
       <div class="mt-4 p-4 bg-dark-grey md:mt-6 md:p-8 md:pt-6">
         <div class="h-[1.938rem] flex items-center justify-between md:h-[2.688rem]">
-          <span class="text-almost-white body-s md:body-m"> Character Length </span>
-          <span class="text-neon-green heading-m md:heading-l"> 10 </span>
+          <span class="text-almost-white body-s md:body-m">Character Length</span>
+          <span class="text-neon-green heading-m md:heading-l">10</span>
         </div>
         <input
-          class="mt-[1.125rem] w-full appearance-none bg-input-range h-2 md:mt-[1.625rem]"
+          class="input-range mt-[1.125rem] w-full appearance-none bg-input-range h-2 md:mt-[1.625rem]"
           type="range"
           min="0"
           max="100"
@@ -37,19 +45,19 @@
         <ul class="mt-[2.625rem] text-almost-white body-s grid gap-4 md:body-m md:gap-5">
           <li class="flex gap-5 md:gap-6">
             <input type="checkbox" id="include-uppercase" />
-            <label class="select-none" for="include-uppercase"> Include Uppercase Letters </label>
+            <label class="select-none" for="include-uppercase">Include Uppercase Letters</label>
           </li>
           <li class="flex gap-5 md:gap-6">
             <input type="checkbox" id="include-lowercase" />
-            <label class="select-none" for="include-lowercase"> Include Lowercase Letters </label>
+            <label class="select-none" for="include-lowercase">Include Lowercase Letters</label>
           </li>
           <li class="flex gap-5 md:gap-6">
             <input type="checkbox" id="include-numbers" />
-            <label class="select-none" for="include-numbers"> Include Numbers </label>
+            <label class="select-none" for="include-numbers">Include Numbers</label>
           </li>
           <li class="flex gap-5 md:gap-6">
-            <input class="bg-grey" type="checkbox" id="include-symbols" />
-            <label class="select-none" for="include-symbols"> Include Symbols </label>
+            <input type="checkbox" id="include-symbols" />
+            <label class="select-none" for="include-symbols">Include Symbols</label>
           </li>
         </ul>
         <div
@@ -85,7 +93,7 @@
               </div>
             </template>
             <template data-password-strength="strong">
-              Medium
+              Strong
               <div class="flex gap-2 h-[1.750rem]" aria-hidden="true">
                 <div class="w-[0.625rem] h-full bg-neon-green"></div>
                 <div class="w-[0.625rem] h-full bg-neon-green"></div>
