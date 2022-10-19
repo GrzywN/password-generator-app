@@ -64,8 +64,8 @@
           class="bg-very-dark-grey px-4 py-[0.875rem] h-14 uppercase text-grey body-s mt-8 flex items-center justify-between md:px-8 md:py-5 md:h-[4.500rem] md:body-m"
         >
           Strength
-          <span class="flex gap-4 text-almost-white body-m uppercase md:heading-m">
-            <template data-password-strength="too-weak">
+          <template data-password-strength="too-weak">
+            <span class="flex gap-4 text-almost-white body-m uppercase md:heading-m">
               Too weak!
               <div class="flex gap-2 h-[1.750rem]" aria-hidden="true">
                 <div class="w-[0.625rem] h-full bg-red"></div>
@@ -73,8 +73,10 @@
                 <div class="w-[0.625rem] h-full border-almost-white border-[2px]"></div>
                 <div class="w-[0.625rem] h-full border-almost-white border-[2px]"></div>
               </div>
-            </template>
-            <template data-password-strength="weak">
+            </span>
+          </template>
+          <template data-password-strength="weak">
+            <span class="flex gap-4 text-almost-white body-m uppercase md:heading-m">
               Weak
               <div class="flex gap-2 h-[1.750rem]" aria-hidden="true">
                 <div class="w-[0.625rem] h-full bg-orange"></div>
@@ -82,8 +84,10 @@
                 <div class="w-[0.625rem] h-full border-almost-white border-[2px]"></div>
                 <div class="w-[0.625rem] h-full border-almost-white border-[2px]"></div>
               </div>
-            </template>
-            <template data-password-strength="medium">
+            </span>
+          </template>
+          <template data-password-strength="medium">
+            <span class="flex gap-4 text-almost-white body-m uppercase md:heading-m">
               Medium
               <div class="flex gap-2 h-[1.750rem]" aria-hidden="true">
                 <div class="w-[0.625rem] h-full bg-yellow"></div>
@@ -91,8 +95,10 @@
                 <div class="w-[0.625rem] h-full bg-yellow"></div>
                 <div class="w-[0.625rem] h-full border-almost-white border-[2px]"></div>
               </div>
-            </template>
-            <template data-password-strength="strong">
+            </span>
+          </template>
+          <template data-password-strength="strong">
+            <span class="flex gap-4 text-almost-white body-m uppercase md:heading-m">
               Strong
               <div class="flex gap-2 h-[1.750rem]" aria-hidden="true">
                 <div class="w-[0.625rem] h-full bg-neon-green"></div>
@@ -100,8 +106,8 @@
                 <div class="w-[0.625rem] h-full bg-neon-green"></div>
                 <div class="w-[0.625rem] h-full bg-neon-green"></div>
               </div>
-            </template>
-          </span>
+            </span>
+          </template>
         </div>
         <button
           class="flex justify-center items-center gap-4 mt-4 w-full h-14 md:h-[4.062rem] bg-neon-green uppercase body-s md:gap-6 md:body-m md:mt-8"
