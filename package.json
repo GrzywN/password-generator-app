@@ -7,8 +7,10 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "lint": "eslint --fix ./src/**/*.*",
-	"test": "vitest",
+    "lint": "eslint ./src/**/*.*",
+    "lint:fix": "eslint --fix ./src/**/*.*",
+	  "test": "vitest",
+    "test:watch": "vitest --watch",
     "coverage": "vitest run --coverage"
   },
   "devDependencies": {

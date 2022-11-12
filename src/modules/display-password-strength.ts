@@ -55,5 +55,4 @@ const appendTemplateContent = (
 };
 
 export default displayPasswordStrength;
-
 export { PasswordStrengths };
