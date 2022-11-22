@@ -37,8 +37,6 @@ const generatePassword = (state: IPasswordGeneratorState): string => {
   if (includesNumbers) password += getRandomNumberCharacter();
   if (includesSymbols) password += getRandomSymbolCharacter();
 
-  throwErrorIfInvalidPasswordLength(password.length, state);
-
   while (password.length < selectedLength)
     password += getRandomCharacterBasedOnState(state);
 
@@ -108,24 +106,21 @@ const getRandomCharacter = (str: string): string => {
   return str.charAt(Math.floor(Math.random() * str.length));
 };
 
-const throwErrorIfInvalidPasswordLength = (
-  generatedPasswordLength: number,
-  state: IPasswordGeneratorState
-): void => {
-  const { selectedLength } = state;
-
-  if (generatedPasswordLength > selectedLength) {
-    throw new Error(PasswordGeneratorErrors.LENGTH_IS_GREATER_THAN_SELECTED);
-  }
-};
-
 const getShuffledPassword = (password: string): string => {
-  return password
-    .split("")
-    .map((value) => ({ value, sort: Math.random() }))
-    .sort((a, b) => a.sort - b.sort)
-    .map(({ value }) => value)
-    .join();
+  // TODO: zmienic zeby uwzglednialo przypadki kiedy są te same znaki i petla zeby skutecznie sie shufflowalo
+
+  let shuffledPassword: string;
+
+  do {
+    shuffledPassword = password
+      .split("")
+      .map((value) => ({ value, sort: Math.random() }))
+      .sort((a, b) => a.sort - b.sort)
+      .map(({ value }) => value)
+      .join();
+  } while (shuffledPassword !== password);
+
+  return shuffledPassword;
 };
 
 export default generatePassword;
@@ -139,5 +134,5 @@ export {
   getRandomNumberCharacter,
   getRandomSymbolCharacter,
   getRandomCharacter,
-  throwErrorIfInvalidPasswordLength,
+  getShuffledPassword,
 };

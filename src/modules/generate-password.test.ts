@@ -9,7 +9,7 @@ import generatePassword, {
   getRandomNumberCharacter,
   getRandomSymbolCharacter,
   getRandomCharacter,
-  throwErrorIfInvalidPasswordLength,
+  getShuffledPassword,
 } from "./generate-password";
 
 const validState: IPasswordGeneratorState = {
@@ -34,14 +34,6 @@ const allIncludesFalseState: IPasswordGeneratorState = {
   includesLowercase: false,
   includesNumbers: false,
   includesSymbols: false,
-};
-
-const lengthIsTooShortState: IPasswordGeneratorState = {
-  selectedLength: 3,
-  includesUppercase: true,
-  includesLowercase: true,
-  includesNumbers: true,
-  includesSymbols: true,
 };
 
 const uppercaseCharacterRegexp = /[A-Z]/;
@@ -72,12 +64,6 @@ describe.concurrent("generatePassword", () => {
     expect(() => {
       generatePassword(allIncludesFalseState);
     }).toThrow(PasswordGeneratorErrors.DOES_NOT_INCLUDE_CHARACTERS);
-  });
-
-  it("throws an error if selected length is too short to contain all selected types of characters", () => {
-    expect(() => {
-      generatePassword(lengthIsTooShortState);
-    }).toThrow(PasswordGeneratorErrors.LENGTH_IS_GREATER_THAN_SELECTED);
   });
 });
 
@@ -175,23 +161,17 @@ describe.concurrent("generates random characters properly", () => {
   });
 });
 
-describe.concurrent("throwErrorIfInvalidPasswordLength", () => {
-  it("throws an error if selected length is too short to contain all selected types of characters", () => {
-    const generatedPasswordLength = 5;
+describe.concurrent("getShuffledPassword", () => {
+  it("returns string which contains all characters included in password", () => {
+    const testPassword = "aB1!";
+    const shuffledTestPassword = getShuffledPassword(testPassword);
 
-    expect(() => {
-      throwErrorIfInvalidPasswordLength(
-        generatedPasswordLength,
-        lengthIsTooShortState
-      );
-    }).toThrow();
-  });
+    const includesCharacters =
+      shuffledTestPassword.includes(testPassword[0]) &&
+      shuffledTestPassword.includes(testPassword[1]) &&
+      shuffledTestPassword.includes(testPassword[2]) &&
+      shuffledTestPassword.includes(testPassword[3]);
 
-  it("does not throw an error if state is valid", () => {
-    const generatedPasswordLength = 4;
-
-    expect(() => {
-      throwErrorIfInvalidPasswordLength(generatedPasswordLength, validState);
-    }).not.toThrow();
+    expect(includesCharacters).toBeTruthy();
   });
 });
