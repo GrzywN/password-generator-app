@@ -139,6 +139,13 @@ function getRandomCharacterFromSet(characters: string): () => string {
   }
 }
 
+/**
+ * Shuffle the elements of an array randomly and return the shuffled array.
+ * This function does not mutate the original array.
+ * @param {T[]} array - The array to shuffle.
+ * @returns {T[]} The shuffled array.
+ * @template T
+ */
 function shuffle<T>(array: T[]): T[] {
   const shuffledArray = [...array]
 
