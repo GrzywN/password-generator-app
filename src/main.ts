@@ -2,7 +2,6 @@ import setupRangeInputStyling from './modules/setup-range-input-styling'
 import displayPasswordStrength, {
   PasswordStrengths,
 } from './modules/display-password-strength'
-import generatePassword from './modules/generate-password'
 import './style.css'
 
 const rangeInputSelector = '[data-input-range]'
