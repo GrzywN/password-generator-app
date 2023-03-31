@@ -9,7 +9,7 @@
     "preview": "vite preview",
     "lint": "eslint ./src/**/*.*",
     "lint:fix": "eslint --fix ./src/**/*.*",
-	  "test": "vitest",
+    "test": "vitest",
     "test:watch": "vitest --watch",
     "coverage": "vitest run --coverage"
   },

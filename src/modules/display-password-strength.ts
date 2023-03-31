@@ -1,58 +1,58 @@
 enum PasswordStrengths {
-  TOO_WEAK = "too-weak",
-  WEAK = "weak",
-  MEDIUM = "medium",
-  STRONG = "strong",
+  TOO_WEAK = 'too-weak',
+  WEAK = 'weak',
+  MEDIUM = 'medium',
+  STRONG = 'strong',
 }
 
 const displayPasswordStrength = (
   htmlDatasetName: string,
-  passwordStrength: PasswordStrengths
+  passwordStrength: PasswordStrengths,
 ): void => {
   const templateSelector = getTemplateSelector(
     htmlDatasetName,
-    passwordStrength
-  );
-  const templateElement = getTemplateElement(templateSelector);
-  const templateElementParent = getTemplateParent(templateElement);
+    passwordStrength,
+  )
+  const templateElement = getTemplateElement(templateSelector)
+  const templateElementParent = getTemplateParent(templateElement)
 
-  removeNonTemplateElements(templateElementParent);
+  removeNonTemplateElements(templateElementParent)
 
-  const templateContent = getTemplateContent(templateElement);
-  appendTemplateContent(templateElementParent, templateContent);
-};
+  const templateContent = getTemplateContent(templateElement)
+  appendTemplateContent(templateElementParent, templateContent)
+}
 
 const getTemplateSelector = (
   htmlDatasetName: string,
-  passwordStrength: string
+  passwordStrength: string,
 ): string => {
-  return `[${htmlDatasetName}="${passwordStrength}"]`;
-};
+  return `[${htmlDatasetName}="${passwordStrength}"]`
+}
 
 const getTemplateElement = (templateSelector: string): HTMLTemplateElement => {
-  return document.querySelector<HTMLTemplateElement>(templateSelector);
-};
+  return document.querySelector<HTMLTemplateElement>(templateSelector)
+}
 
 const getTemplateParent = (
-  templateElement: HTMLTemplateElement
+  templateElement: HTMLTemplateElement,
 ): ParentNode => {
-  return templateElement.parentNode;
-};
+  return templateElement.parentNode
+}
 
 const removeNonTemplateElements = (parentNode: ParentNode): void => {
-  parentNode.querySelectorAll("*:not(template)").forEach((e) => e.remove());
-};
+  parentNode.querySelectorAll('*:not(template)').forEach((e) => e.remove())
+}
 
 const getTemplateContent = (templateElement: HTMLTemplateElement): Node => {
-  return templateElement.content.cloneNode(true);
-};
+  return templateElement.content.cloneNode(true)
+}
 
 const appendTemplateContent = (
   parentNode: ParentNode,
-  templateContent: Node
+  templateContent: Node,
 ): void => {
-  parentNode.appendChild(templateContent);
-};
+  parentNode.appendChild(templateContent)
+}
 
-export default displayPasswordStrength;
-export { PasswordStrengths };
+export default displayPasswordStrength
+export { PasswordStrengths }

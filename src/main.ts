@@ -1,11 +1,20 @@
-import setupRangeInputStyling from "./modules/setup-range-input-styling";
+import setupRangeInputStyling from './modules/setup-range-input-styling'
 import displayPasswordStrength, {
   PasswordStrengths,
-} from "./modules/display-password-strength";
-import "./style.css";
+} from './modules/display-password-strength'
+import generatePassword from './modules/generate-password'
+import './style.css'
 
-const rangeInputSelector = "[data-input-range]";
-const passwordStrengthHtmlDataset = "data-password-strength";
+const rangeInputSelector = '[data-input-range]'
+// TODO: change to make it consistent
+const passwordStrengthHtmlDataset = 'data-password-strength'
+const buttonSelector = '[data-password-button]'
 
-setupRangeInputStyling(rangeInputSelector);
-displayPasswordStrength(passwordStrengthHtmlDataset, PasswordStrengths.MEDIUM);
+const button = document.querySelector<HTMLButtonElement>(buttonSelector)!
+
+button.addEventListener('click', handleGenerate)
+
+const handleGenerate = () => {}
+
+setupRangeInputStyling(rangeInputSelector)
+displayPasswordStrength(passwordStrengthHtmlDataset, PasswordStrengths.MEDIUM)

@@ -15,5 +15,13 @@ module.exports = {
     sourceType: "module",
     project: "./tsconfig.ts",
   },
-  rules: {},
+  rules: {
+    "prettier/prettier": [
+    "error",
+    {},
+    {
+      "usePrettierrc": true
+    }
+  ]
+  },
 };
