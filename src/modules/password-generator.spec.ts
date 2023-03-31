@@ -4,7 +4,7 @@ import {
   generatePassword,
   PasswordGeneratorState,
   PASSWORD_ERRORS,
-} from './generate-password'
+} from './password-generator'
 
 describe('generatePassword', () => {
   it('should generate a password with the correct length and characters', () => {
