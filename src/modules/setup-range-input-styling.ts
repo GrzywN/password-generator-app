@@ -14,10 +14,10 @@ const setBackgroundBasedOnInputValue = (
 ): void => {
   inputElement.style.backgroundImage = `
 	linear-gradient(to right,
-	var(--color-neon-green) 0%,
-	var(--color-neon-green) ${inputElement.value}%,
-	var(--color-very-dark-grey) ${inputElement.value}%,
-	var(--color-very-dark-grey) 100%)
+	var(--color-primary-400) 0%,
+	var(--color-primary-400) ${inputElement.value}%,
+	var(--color-neutral-700) ${inputElement.value}%,
+	var(--color-neutral-700) 100%)
 	`
 }
 

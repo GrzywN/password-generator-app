@@ -4,8 +4,10 @@
 
 @layer base {
   :root {
-    --color-neon-green: #a4ffaf;
-    --color-very-dark-grey: #18171f;
+    /* These colors are being used for StyledRangeInput styling. */
+
+    --color-primary-400: theme(colors.primary.400);
+    --color-neutral-700: theme(colors.neutral.700);
   }
 }
 
