@@ -1,19 +1,39 @@
 /** @type {import('tailwindcss').Config} */
+const neonGreen = '#a4ffaf'
+const almostWhite = '#e6e5ea'
+const gray = '#817d92'
+const darkGray = '#24232c'
+const veryDarkGray = '#18171f'
+const yellow = '#f8cd65'
+const orange = '#fb7c58'
+const red = '#f64a4a'
+
 module.exports = {
-  content: ["./index.html", "./src/**/*.ts"],
+  content: ['./index.html', './src/**/*.ts'],
   theme: {
     colors: {
-      red: "#f64a4a",
-      orange: "#fb7c58",
-      yellow: "#f8cd65",
-      "neon-green": "#a4ffaf",
-      "almost-white": "#e6e5ea",
-      grey: "#817d92",
-      "dark-grey": "#24232c",
-      "very-dark-grey": "#18171f",
-      transparent: "transparent",
+      primary: {
+        400: neonGreen,
+      },
+      neutral: {
+        50: almostWhite,
+        300: gray,
+        500: darkGray,
+        700: veryDarkGray,
+      },
+      danger: {
+        400: red,
+      },
+      warning: {
+        300: yellow,
+        500: orange,
+      },
+      success: {
+        400: neonGreen,
+      },
+      transparent: 'transparent',
     },
     extend: {},
   },
   plugins: [],
-};
+}

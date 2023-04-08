@@ -3,9 +3,19 @@
 @tailwind utilities;
 
 @layer base {
-  html {
+  :root {
     --color-neon-green: #a4ffaf;
     --color-very-dark-grey: #18171f;
+  }
+
+  input[type='range'] {
+    background-image: linear-gradient(
+      to right,
+      var(--color-neon-green, #a4ffaf) 0%,
+      var(--color-neon-green, #a4ffaf) calc(attr(value) * 1%),
+      var(--color-very-dark-grey, #18171f) calc(attr(value) * 1%),
+      var(--color-very-dark-grey, #18171f) 100%
+    );
   }
 }
 
@@ -35,18 +45,18 @@
   }
 
   .input-range::-webkit-slider-thumb {
-    @apply w-7 h-7 rounded-full border-none bg-almost-white;
+    @apply w-7 h-7 rounded-full border-none bg-neutral-50;
   }
 
   .input-range::-moz-range-thumb {
-    @apply w-7 h-7 rounded-full border-none bg-almost-white;
+    @apply w-7 h-7 rounded-full border-none bg-neutral-50;
   }
 
   .input-range:hover::-webkit-slider-thumb {
-    @apply bg-very-dark-grey outline-2 outline-neon-green/100 outline;
+    @apply bg-neutral-700 outline-2 outline-primary-400/100 outline;
   }
 
   .input-range:hover::-moz-range-thumb {
-    @apply bg-very-dark-grey outline-2 outline-neon-green/100 outline;
+    @apply bg-neutral-700 outline-2 outline-primary-400/100 outline;
   }
 }
