@@ -7,16 +7,6 @@
     --color-neon-green: #a4ffaf;
     --color-very-dark-grey: #18171f;
   }
-
-  input[type='range'] {
-    background-image: linear-gradient(
-      to right,
-      var(--color-neon-green, #a4ffaf) 0%,
-      var(--color-neon-green, #a4ffaf) calc(attr(value) * 1%),
-      var(--color-very-dark-grey, #18171f) calc(attr(value) * 1%),
-      var(--color-very-dark-grey, #18171f) 100%
-    );
-  }
 }
 
 @layer components {
