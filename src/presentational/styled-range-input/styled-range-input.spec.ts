@@ -20,10 +20,7 @@ describe('StyledRangeInput', () => {
   })
 
   it('should call the method to set up styling on init', () => {
-    const spySetupStylingOnInit = vi.spyOn(
-      styledRangeInput,
-      'setupStylingOnInit',
-    )
+    const spySetupStylingOnInit = vi.spyOn(styledRangeInput, 'setupStylingOnInit')
 
     styledRangeInput.setup(inputElement)
 
@@ -31,10 +28,7 @@ describe('StyledRangeInput', () => {
   })
 
   it('should call the method to set up styling on value change', () => {
-    const spySetupStylingOnValueChange = vi.spyOn(
-      styledRangeInput,
-      'setupStylingOnValueChange',
-    )
+    const spySetupStylingOnValueChange = vi.spyOn(styledRangeInput, 'setupStylingOnValueChange')
 
     styledRangeInput.setup(inputElement)
 

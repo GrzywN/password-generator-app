@@ -1,5 +1,5 @@
-import { PasswordGeneratorState } from "../../types/interfaces/PasswordGeneratorState"
-import { PasswordStrengths } from "../../types/enums/PasswordStrengths"
+import { PasswordGeneratorState } from '../../types/interfaces/PasswordGeneratorState'
+import { PasswordStrengths } from '../../types/enums/PasswordStrengths'
 
 const PASSWORD_LENGTH_WEAK = 6
 const PASSWORD_LENGTH_MEDIUM = 10
@@ -11,10 +11,11 @@ export function evaluatePasswordStrengthBasedOnState(state: PasswordGeneratorSta
     includesLowercase,
     includesUppercase,
     includesNumbers,
-    includesSymbols
+    includesSymbols,
   } = state
 
-  const includesAllTypesOfCharacters = includesLowercase && includesUppercase && includesNumbers && includesSymbols
+  const includesAllTypesOfCharacters =
+    includesLowercase && includesUppercase && includesNumbers && includesSymbols
   const passwordLength = currentPassword.length > 0 ? currentPassword.length : selectedLength
 
   if (passwordLength < PASSWORD_LENGTH_WEAK) {
@@ -45,7 +46,7 @@ export function evaluatePasswordStrengthBasedOnPassword(password: string): Passw
     includesUppercase: hasUppercaseLetter(password),
     includesNumbers: hasNumber(password),
     includesSymbols: hasSymbol(password),
-    currentPassword: password
+    currentPassword: password,
   }
 
   return evaluatePasswordStrengthBasedOnState(state)

@@ -29,13 +29,7 @@ interface PasswordGeneratorState {
 function generatePassword(state: PasswordGeneratorState): string {
   throwErrorIfInvalidState(state)
 
-  const {
-    selectedLength,
-    includesUppercase,
-    includesLowercase,
-    includesNumbers,
-    includesSymbols,
-  } = state
+  const { selectedLength, includesUppercase, includesLowercase, includesNumbers, includesSymbols } = state
 
   let passwordCharacters = getRequiredIncludedCharacters(state)
 
@@ -64,30 +58,18 @@ function throwErrorIfInvalidState(state: PasswordGeneratorState): void {
   const errorMessages = getErrorMessagesFromState(state)
 
   if (errorMessages.length > 0) {
-    const errorMessage = errorMessages.reduce(
-      (acc, curr) => acc + '\n' + curr,
-      '',
-    )
+    const errorMessage = errorMessages.reduce((acc, curr) => acc + '\n' + curr, '')
     throw new Error(errorMessage)
   }
 }
 
 function getErrorMessagesFromState(state: PasswordGeneratorState): string[] {
-  const {
-    includesUppercase,
-    includesLowercase,
-    includesNumbers,
-    includesSymbols,
-    selectedLength,
-  } = state
+  const { includesUppercase, includesLowercase, includesNumbers, includesSymbols, selectedLength } = state
 
   const errorMessages: string[] = []
 
   const howManyCharactersIncluded =
-    Number(includesUppercase) +
-    Number(includesLowercase) +
-    Number(includesNumbers) +
-    Number(includesSymbols)
+    Number(includesUppercase) + Number(includesLowercase) + Number(includesNumbers) + Number(includesSymbols)
 
   if (selectedLength <= 0) {
     errorMessages.push(PASSWORD_ERRORS.SELECTED_LENGTH_LESS_OR_EQUAL_ZERO)
@@ -95,27 +77,15 @@ function getErrorMessagesFromState(state: PasswordGeneratorState): string[] {
     errorMessages.push(PASSWORD_ERRORS.LENGTH_IS_GREATER_THAN_SELECTED)
   }
 
-  if (
-    !includesUppercase &&
-    !includesLowercase &&
-    !includesNumbers &&
-    !includesSymbols
-  ) {
+  if (!includesUppercase && !includesLowercase && !includesNumbers && !includesSymbols) {
     errorMessages.push(PASSWORD_ERRORS.DOES_NOT_INCLUDE_CHARACTERS)
   }
 
   return errorMessages
 }
 
-function getRequiredIncludedCharacters(
-  state: PasswordGeneratorState,
-): string[] {
-  const {
-    includesUppercase,
-    includesLowercase,
-    includesNumbers,
-    includesSymbols,
-  } = state
+function getRequiredIncludedCharacters(state: PasswordGeneratorState): string[] {
+  const { includesUppercase, includesLowercase, includesNumbers, includesSymbols } = state
 
   const randomUppercase = getRandomCharacterFromSet(UPPERCASE_CHARS)
   const randomLowercase = getRandomCharacterFromSet(LOWERCASE_CHARS)

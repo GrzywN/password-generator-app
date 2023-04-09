@@ -1,25 +1,25 @@
 import { describe, it, expect } from 'vitest'
-import { PasswordGeneratorState } from "../../types/interfaces/PasswordGeneratorState"
-import { PasswordStrengths } from "../../types/enums/PasswordStrengths"
+import { PasswordGeneratorState } from '../../types/interfaces/PasswordGeneratorState'
+import { PasswordStrengths } from '../../types/enums/PasswordStrengths'
 import {
   evaluatePasswordStrengthBasedOnState,
   evaluatePasswordStrengthBasedOnPassword,
   hasLowercaseLetter,
   hasUppercaseLetter,
   hasNumber,
-  hasSymbol
-} from "./password-strength-evaluator"
+  hasSymbol,
+} from './password-strength-evaluator'
 
-describe("Password Strength Evaluator", () => {
-  describe("evaluatePasswordStrengthBasedOnState", () => {
+describe('Password Strength Evaluator', () => {
+  describe('evaluatePasswordStrengthBasedOnState', () => {
     it("should return 'TOO_WEAK' for passwords with length less than 6", () => {
       const state: PasswordGeneratorState = {
         selectedLength: 5,
-        currentPassword: "",
+        currentPassword: '',
         includesLowercase: true,
         includesUppercase: true,
         includesNumbers: true,
-        includesSymbols: true
+        includesSymbols: true,
       }
 
       const result = evaluatePasswordStrengthBasedOnState(state)
@@ -30,11 +30,11 @@ describe("Password Strength Evaluator", () => {
     it("should return 'WEAK' for passwords with length less than 10 and not including all types of characters", () => {
       const state: PasswordGeneratorState = {
         selectedLength: 8,
-        currentPassword: "",
+        currentPassword: '',
         includesLowercase: true,
         includesUppercase: false,
         includesNumbers: true,
-        includesSymbols: false
+        includesSymbols: false,
       }
 
       const result = evaluatePasswordStrengthBasedOnState(state)
@@ -45,11 +45,11 @@ describe("Password Strength Evaluator", () => {
     it("should return 'MEDIUM' for passwords with length less than 10 and including all types of characters", () => {
       const state: PasswordGeneratorState = {
         selectedLength: 9,
-        currentPassword: "",
+        currentPassword: '',
         includesLowercase: true,
         includesUppercase: true,
         includesNumbers: true,
-        includesSymbols: true
+        includesSymbols: true,
       }
 
       const result = evaluatePasswordStrengthBasedOnState(state)
@@ -60,11 +60,11 @@ describe("Password Strength Evaluator", () => {
     it("should return 'MEDIUM' for passwords with length 10 or more and not including all types of characters", () => {
       const state: PasswordGeneratorState = {
         selectedLength: 10,
-        currentPassword: "",
+        currentPassword: '',
         includesLowercase: true,
         includesUppercase: true,
         includesNumbers: false,
-        includesSymbols: false
+        includesSymbols: false,
       }
 
       const result = evaluatePasswordStrengthBasedOnState(state)
@@ -75,11 +75,11 @@ describe("Password Strength Evaluator", () => {
     it("should return 'STRONG' for passwords with length 10 or more and including all types of characters", () => {
       const state: PasswordGeneratorState = {
         selectedLength: 12,
-        currentPassword: "",
+        currentPassword: '',
         includesLowercase: true,
         includesUppercase: true,
         includesNumbers: true,
-        includesSymbols: true
+        includesSymbols: true,
       }
 
       const result = evaluatePasswordStrengthBasedOnState(state)
@@ -88,9 +88,9 @@ describe("Password Strength Evaluator", () => {
     })
   })
 
-  describe("evaluatePasswordStrengthBasedOnPassword", () => {
-    it("should return correct password strength based on given password", () => {
-      const password = "Abcd1234!@#$"
+  describe('evaluatePasswordStrengthBasedOnPassword', () => {
+    it('should return correct password strength based on given password', () => {
+      const password = 'Abcd1234!@#$'
 
       const result = evaluatePasswordStrengthBasedOnPassword(password)
 
@@ -98,25 +98,25 @@ describe("Password Strength Evaluator", () => {
     })
   })
 
-  describe("hasLowercaseLetter", () => {
-    it("should return true if password contains a lowercase letter", () => {
-      const password = "Abc123!@#"
+  describe('hasLowercaseLetter', () => {
+    it('should return true if password contains a lowercase letter', () => {
+      const password = 'Abc123!@#'
 
       const result = hasLowercaseLetter(password)
 
       expect(result).toEqual(true)
     })
 
-    it("should return false if password does not contain a lowercase letter", () => {
-      const password = "ABC123!@#"
+    it('should return false if password does not contain a lowercase letter', () => {
+      const password = 'ABC123!@#'
 
       const result = hasLowercaseLetter(password)
 
       expect(result).toEqual(false)
     })
 
-    it("should return false if password is empty", () => {
-      const password = ""
+    it('should return false if password is empty', () => {
+      const password = ''
 
       const result = hasLowercaseLetter(password)
 
@@ -124,25 +124,25 @@ describe("Password Strength Evaluator", () => {
     })
   })
 
-  describe("hasUppercaseLetter", () => {
-    it("should return true if password contains an uppercase letter", () => {
-      const password = "Abc123!@#"
+  describe('hasUppercaseLetter', () => {
+    it('should return true if password contains an uppercase letter', () => {
+      const password = 'Abc123!@#'
 
       const result = hasUppercaseLetter(password)
 
       expect(result).toEqual(true)
     })
 
-    it("should return false if password does not contain an uppercase letter", () => {
-      const password = "abc123!@#"
+    it('should return false if password does not contain an uppercase letter', () => {
+      const password = 'abc123!@#'
 
       const result = hasUppercaseLetter(password)
 
       expect(result).toEqual(false)
     })
 
-    it("should return false if password is empty", () => {
-      const password = ""
+    it('should return false if password is empty', () => {
+      const password = ''
 
       const result = hasUppercaseLetter(password)
 
@@ -150,25 +150,25 @@ describe("Password Strength Evaluator", () => {
     })
   })
 
-  describe("hasNumber", () => {
-    it("should return true if password contains a number", () => {
-      const password = "Abc123!@#"
+  describe('hasNumber', () => {
+    it('should return true if password contains a number', () => {
+      const password = 'Abc123!@#'
 
       const result = hasNumber(password)
 
       expect(result).toEqual(true)
     })
 
-    it("should return false if password does not contain a number", () => {
-      const password = "Abc!@#"
+    it('should return false if password does not contain a number', () => {
+      const password = 'Abc!@#'
 
       const result = hasNumber(password)
 
       expect(result).toEqual(false)
     })
 
-    it("should return false if password is empty", () => {
-      const password = ""
+    it('should return false if password is empty', () => {
+      const password = ''
 
       const result = hasNumber(password)
 
@@ -176,16 +176,16 @@ describe("Password Strength Evaluator", () => {
     })
   })
 
-  describe("hasSymbol", () => {
-    it("should return true if password contains a symbol", () => {
-      const password = "Abc123!@#"
+  describe('hasSymbol', () => {
+    it('should return true if password contains a symbol', () => {
+      const password = 'Abc123!@#'
 
       const result = hasSymbol(password)
 
       expect(result).toEqual(true)
     })
 
-    it("should detect all the symbols which can be generated", () => {
+    it('should detect all the symbols which can be generated', () => {
       const SYMBOL_CHARS = '~`!@#$%^&*()-_=+[{]};:\'"\\|,<.>/?'
 
       Array.from(SYMBOL_CHARS).forEach((char: string) => {
@@ -195,16 +195,16 @@ describe("Password Strength Evaluator", () => {
       })
     })
 
-    it("should return false if password does not contain a symbol", () => {
-      const password = "Abc123"
+    it('should return false if password does not contain a symbol', () => {
+      const password = 'Abc123'
 
       const result = hasSymbol(password)
 
       expect(result).toEqual(false)
     })
 
-    it("should return false if password is empty", () => {
-      const password = ""
+    it('should return false if password is empty', () => {
+      const password = ''
 
       const result = hasSymbol(password)
 

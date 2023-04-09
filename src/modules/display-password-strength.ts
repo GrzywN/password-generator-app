@@ -5,14 +5,8 @@ enum PasswordStrengths {
   STRONG = 'strong',
 }
 
-const displayPasswordStrength = (
-  htmlDatasetName: string,
-  passwordStrength: PasswordStrengths,
-): void => {
-  const templateSelector = getTemplateSelector(
-    htmlDatasetName,
-    passwordStrength,
-  )
+const displayPasswordStrength = (htmlDatasetName: string, passwordStrength: PasswordStrengths): void => {
+  const templateSelector = getTemplateSelector(htmlDatasetName, passwordStrength)
   const templateElement = getTemplateElement(templateSelector)
   const templateElementParent = getTemplateParent(templateElement)
 
@@ -22,10 +16,7 @@ const displayPasswordStrength = (
   appendTemplateContent(templateElementParent, templateContent)
 }
 
-const getTemplateSelector = (
-  htmlDatasetName: string,
-  passwordStrength: string,
-): string => {
+const getTemplateSelector = (htmlDatasetName: string, passwordStrength: string): string => {
   return `[${htmlDatasetName}="${passwordStrength}"]`
 }
 
@@ -33,9 +24,7 @@ const getTemplateElement = (templateSelector: string): HTMLTemplateElement => {
   return document.querySelector<HTMLTemplateElement>(templateSelector)
 }
 
-const getTemplateParent = (
-  templateElement: HTMLTemplateElement,
-): ParentNode => {
+const getTemplateParent = (templateElement: HTMLTemplateElement): ParentNode => {
   return templateElement.parentNode
 }
 
@@ -47,12 +36,9 @@ const getTemplateContent = (templateElement: HTMLTemplateElement): Node => {
   return templateElement.content.cloneNode(true)
 }
 
-const appendTemplateContent = (
-  parentNode: ParentNode,
-  templateContent: Node,
-): void => {
+const appendTemplateContent = (parentNode: ParentNode, templateContent: Node): void => {
   parentNode.appendChild(templateContent)
 }
 
 export default displayPasswordStrength
-export { PasswordStrengths }
+export { displayPasswordStrength, PasswordStrengths }

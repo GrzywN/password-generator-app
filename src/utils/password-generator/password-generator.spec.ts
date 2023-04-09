@@ -1,10 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import {
-  shuffle,
-  generatePassword,
-  PasswordGeneratorState,
-  PASSWORD_ERRORS,
-} from './password-generator'
+import { shuffle, generatePassword, PasswordGeneratorState, PASSWORD_ERRORS } from './password-generator'
 
 describe('generatePassword', () => {
   it('should generate a password with the correct length and characters', () => {
@@ -59,9 +54,7 @@ describe('generatePassword', () => {
       includesSymbols: false,
     }
 
-    expect(() => generatePassword(invalidState)).toThrow(
-      PASSWORD_ERRORS.DOES_NOT_INCLUDE_CHARACTERS,
-    )
+    expect(() => generatePassword(invalidState)).toThrow(PASSWORD_ERRORS.DOES_NOT_INCLUDE_CHARACTERS)
   })
 
   it('should throw an error if generated password cannot include all required characters due to short length', () => {
@@ -73,9 +66,7 @@ describe('generatePassword', () => {
       includesSymbols: true,
     }
 
-    expect(() => generatePassword(invalidState)).toThrow(
-      PASSWORD_ERRORS.LENGTH_IS_GREATER_THAN_SELECTED,
-    )
+    expect(() => generatePassword(invalidState)).toThrow(PASSWORD_ERRORS.LENGTH_IS_GREATER_THAN_SELECTED)
   })
 
   it('should not throw an error if the state is valid', () => {

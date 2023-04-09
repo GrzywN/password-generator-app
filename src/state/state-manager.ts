@@ -54,10 +54,7 @@ export class StateManager {
     this.updateState({ selectedLength: newLength })
   }
 
-  public handleOptionChange(
-    optionName: keyof PasswordGeneratorState,
-    isChecked: boolean,
-  ): void {
+  public handleOptionChange(optionName: keyof PasswordGeneratorState, isChecked: boolean): void {
     this.updateState({ [optionName]: isChecked })
   }
 

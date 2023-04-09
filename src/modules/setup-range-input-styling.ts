@@ -9,9 +9,7 @@ const handlePageLoad = (inputElement: HTMLInputElement): void => {
   setBackgroundBasedOnInputValue(inputElement)
 }
 
-const setBackgroundBasedOnInputValue = (
-  inputElement: HTMLInputElement,
-): void => {
+const setBackgroundBasedOnInputValue = (inputElement: HTMLInputElement): void => {
   inputElement.style.backgroundImage = `
 	linear-gradient(to right,
 	var(--color-primary-400) 0%,
@@ -30,8 +28,4 @@ const handleRangeInputChange = (e: Event): void => {
 
 export default setupRangeInputStyling
 
-export {
-  handlePageLoad,
-  setBackgroundBasedOnInputValue,
-  handleRangeInputChange,
-}
+export { handlePageLoad, setBackgroundBasedOnInputValue, handleRangeInputChange }

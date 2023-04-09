@@ -6,9 +6,7 @@ export class PubSub {
   }
 
   unsubscribe(fn: Function): void {
-    this.subscribers = this.subscribers.filter(
-      (subscriber) => subscriber !== fn,
-    )
+    this.subscribers = this.subscribers.filter((subscriber) => subscriber !== fn)
   }
 
   unsubscribeAll(): void {
