@@ -3,16 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="/assets/favicon-32x32.png"
-    />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png" />
     <title>Frontend Mentor | Password generator app</title>
   </head>
 
   <body class="min-h-screen bg-neutral-700 grid place-items-center">
+    <main class="max-w-[21.438rem] md:max-w-[33.750rem] w-full">
       <h1
         class="font-mono font-bold text-base text-neutral-300 text-center tracking-normal leading-[1.312rem] md:text-2xl"
       >
@@ -21,14 +17,10 @@
       <div
         class="mt-4 h-16 bg-neutral-500 px-4 flex justify-between items-center gap-4 md:mt-6 md:h-20 md:px-8 md:py-[1.188rem]"
       >
-        <h2 class="text-neutral-50 heading-m opacity-25 md:heading-l">
+        <h2 class="text-neutral-50 heading-m opacity-25 md:heading-l" data-pg-generated-password>
           P4$5W0rD!
         </h2>
-        <button
-          type="button"
-          class="w-[17.0.312rem] h-5 md:w-[1.312rem] md:h-6"
-          title="Copy to clipboard."
-        >
+        <button type="button" class="w-[17.0.312rem] h-5 md:w-[1.312rem] md:h-6" title="Copy to clipboard.">
           <img
             class="object-cover"
             src="images/icon-copy.svg"
@@ -37,110 +29,78 @@
         </button>
       </div>
       <div class="mt-4 p-4 bg-neutral-500 md:mt-6 md:p-8 md:pt-6">
-        <div
-          class="h-[1.938rem] flex items-center justify-between md:h-[2.688rem]"
-        >
+        <div class="h-[1.938rem] flex items-center justify-between md:h-[2.688rem]">
           <span class="text-neutral-50 body-s md:body-m">Character Length</span>
-          <span class="text-primary-400 heading-m md:heading-l">10</span>
-          >
-          <span class="text-neon-green heading-m md:heading-l">10</span>
+          <span class="text-primary-400 heading-m md:heading-l" data-pg-length-indicator>10</span>
         </div>
-        <input
-          class="input-range mt-[1.125rem] w-full appearance-none bg-input-range h-2 md:mt-[1.625rem]"
-          type="range"
-          min="0"
-          max="100"
-          value="50"
-          data-input-range
-        />
-        <ul
-            class="mt-[2.625rem] text-neutral-50 body-s grid gap-4 md:body-m md:gap-5"
-          >
+        <form>
+          <input
+            class="input-range mt-[1.125rem] w-full appearance-none bg-input-range h-2 md:mt-[1.625rem]"
+            type="range"
+            min="0"
+            max="100"
+            value="50"
+            data-pg-length-range-input
+          />
+          <ul class="mt-[2.625rem] text-neutral-50 body-s grid gap-4 md:body-m md:gap-5">
             <li class="flex gap-5 md:gap-6">
-            <input type="checkbox" id="include-uppercase" />
-            <label class="select-none" for="include-uppercase"
-              >Include Uppercase Letters</label
-            >
-          </li>
-          <li class="flex gap-5 md:gap-6">
-            <input type="checkbox" id="include-lowercase" />
-            <label class="select-none" for="include-lowercase"
-              >Include Lowercase Letters</label
-            >
-          </li>
-          <li class="flex gap-5 md:gap-6">
-            <input type="checkbox" id="include-numbers" />
-            <label class="select-none" for="include-numbers"
-              >Include Numbers</label
-            >
-          </li>
-          <li class="flex gap-5 md:gap-6">
-            <input type="checkbox" id="include-symbols" />
-            <label class="select-none" for="include-symbols"
-              >Include Symbols</label
-            >
-          </li>
-        </ul>
+              <input type="checkbox" id="include-uppercase" name="includesUppercase" />
+              <label class="select-none" for="include-uppercase">Include Uppercase Letters</label>
+            </li>
+            <li class="flex gap-5 md:gap-6">
+              <input type="checkbox" id="include-lowercase" name="includesLowercase" />
+              <label class="select-none" for="include-lowercase">Include Lowercase Letters</label>
+            </li>
+            <li class="flex gap-5 md:gap-6">
+              <input type="checkbox" id="include-numbers" name="includesNumbers" />
+              <label class="select-none" for="include-numbers">Include Numbers</label>
+            </li>
+            <li class="flex gap-5 md:gap-6">
+              <input type="checkbox" id="include-symbols" name="includesSymbols" />
+              <label class="select-none" for="include-symbols">Include Symbols</label>
+            </li>
+          </ul>
+        </form>
         <div
           class="bg-neutral-700 px-4 py-[0.875rem] h-14 uppercase text-neutral-300 body-s mt-8 flex items-center justify-between md:px-8 md:py-5 md:h-[4.500rem] md:body-m"
         >
           Strength
-          <div data-password-strength-container>
-            <template data-password-strength="too-weak">
-              <span
-                class="flex gap-4 text-neutral-50 body-m uppercase md:heading-m"
-              >
+          <div>
+            <template data-pg-password-strength="too-weak">
+              <span class="flex gap-4 text-neutral-50 body-m uppercase md:heading-m">
                 Too weak!
                 <div class="flex gap-2 h-[1.750rem]" aria-hidden="true">
                   <div class="w-[0.625rem] h-full bg-danger-400"></div>
-                  <div
-                    class="w-[0.625rem] h-full border-neutral-50 border-[2px]"
-                  ></div>
-                  <div
-                    class="w-[0.625rem] h-full border-neutral-50 border-[2px]"
-                  ></div>
-                  <div
-                    class="w-[0.625rem] h-full border-neutral-50 border-[2px]"
-                  ></div>
+                  <div class="w-[0.625rem] h-full border-neutral-50 border-[2px]"></div>
+                  <div class="w-[0.625rem] h-full border-neutral-50 border-[2px]"></div>
+                  <div class="w-[0.625rem] h-full border-neutral-50 border-[2px]"></div>
                 </div>
               </span>
             </template>
-            <template data-password-strength="weak">
-              <span
-                class="flex gap-4 text-neutral-50 body-m uppercase md:heading-m"
-              >
+            <template data-pg-password-strength="weak">
+              <span class="flex gap-4 text-neutral-50 body-m uppercase md:heading-m">
                 Weak
                 <div class="flex gap-2 h-[1.750rem]" aria-hidden="true">
                   <div class="w-[0.625rem] h-full bg-warning-500"></div>
                   <div class="w-[0.625rem] h-full bg-warning-500"></div>
-                  <div
-                    class="w-[0.625rem] h-full border-neutral-50 border-[2px]"
-                  ></div>
-                  <div
-                    class="w-[0.625rem] h-full border-neutral-50 border-[2px]"
-                  ></div>
+                  <div class="w-[0.625rem] h-full border-neutral-50 border-[2px]"></div>
+                  <div class="w-[0.625rem] h-full border-neutral-50 border-[2px]"></div>
                 </div>
               </span>
             </template>
-            <template data-password-strength="medium">
-              <span
-                class="flex gap-4 text-neutral-50 body-m uppercase md:heading-m"
-              >
+            <template data-pg-password-strength="medium">
+              <span class="flex gap-4 text-neutral-50 body-m uppercase md:heading-m">
                 Medium
                 <div class="flex gap-2 h-[1.750rem]" aria-hidden="true">
                   <div class="w-[0.625rem] h-full bg-warning-300"></div>
                   <div class="w-[0.625rem] h-full bg-warning-300"></div>
                   <div class="w-[0.625rem] h-full bg-warning-300"></div>
-                  <div
-                    class="w-[0.625rem] h-full border-neutral-50 border-[2px]"
-                  ></div>
+                  <div class="w-[0.625rem] h-full border-neutral-50 border-[2px]"></div>
                 </div>
               </span>
             </template>
-            <template data-password-strength="strong">
-              <span
-                class="flex gap-4 text-neutral-50 body-m uppercase md:heading-m"
-              >
+            <template data-pg-password-strength="strong">
+              <span class="flex gap-4 text-neutral-50 body-m uppercase md:heading-m">
                 Strong
                 <div class="flex gap-2 h-[1.750rem]" aria-hidden="true">
                   <div class="w-[0.625rem] h-full bg-primary-400"></div>
@@ -155,7 +115,7 @@
         <button
           class="flex justify-center items-center gap-4 mt-4 w-full h-14 md:h-[4.062rem] bg-primary-400 uppercase body-s md:gap-6 md:body-m md:mt-8"
           type="button"
-          data-password-button
+          data-pg-password-generate-button
         >
           Generate
           <img class="h-3" src="/images/icon-arrow-right.svg" alt="" />

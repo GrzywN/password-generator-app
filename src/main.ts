@@ -1,19 +1,58 @@
-import setupRangeInputStyling from './modules/setup-range-input-styling'
-import displayPasswordStrength, {
-  PasswordStrengths,
-} from './modules/display-password-strength'
+import { StyledRangeInput } from './presentational/styled-range-input'
+import { StateManager } from './state/state-manager'
+import {
+  handleSelectedLengthChange,
+  handleCheckboxOptionChange,
+  handleGeneratePassword,
+} from './state/onEventHandlers'
+import { handleStateChange } from './state/onStateChangeHandlers'
 import './style.css'
 
-const rangeInputSelector = '[data-input-range]'
-// TODO: change to make it consistent
-const passwordStrengthHtmlDataset = 'data-password-strength'
-const buttonSelector = '[data-password-button]'
+const passwordPreview = document.querySelector<HTMLHeadingElement>('[data-pg-generated-password]')
+const lengthIndicator = document.querySelector<HTMLSpanElement>('[data-pg-length-indicator]')
+const includesUppercaseCheckbox = document.querySelector<HTMLInputElement>('[name="includesUppercase"]')
+const includesLowercaseCheckbox = document.querySelector<HTMLInputElement>('[name="includesLowercase"]')
+const includesNumbersCheckbox = document.querySelector<HTMLInputElement>('[name="includesNumbers"]')
+const includesSymbolsCheckbox = document.querySelector<HTMLInputElement>('[name="includesSymbols"]')
+const generatePasswordButton = document.querySelector<HTMLButtonElement>('[data-pg-password-generate-button]')
+const lengthRangeInput = document.querySelector<HTMLInputElement>('[data-pg-length-range-input]')
 
-const button = document.querySelector<HTMLButtonElement>(buttonSelector)!
+if (
+  passwordPreview == null ||
+  lengthIndicator == null ||
+  includesUppercaseCheckbox == null ||
+  includesLowercaseCheckbox == null ||
+  includesNumbersCheckbox == null ||
+  includesSymbolsCheckbox == null ||
+  generatePasswordButton == null ||
+  lengthRangeInput == null
+) {
+  throw new Error('main.ts: One of the elements is null. At this point, app would break anyway.')
+}
 
-button.addEventListener('click', handleGenerate)
+new StyledRangeInput().setup(lengthRangeInput)
 
-const handleGenerate = () => {}
+const stateManager: StateManager = StateManager.getInstance()
+const handleStateChangeWithElements = handleStateChange({
+  passwordPreview,
+  lengthIndicator,
+  includesUppercaseCheckbox,
+  includesLowercaseCheckbox,
+  includesNumbersCheckbox,
+  includesSymbolsCheckbox,
+  lengthRangeInput,
+})
 
-setupRangeInputStyling(rangeInputSelector)
-displayPasswordStrength(passwordStrengthHtmlDataset, PasswordStrengths.MEDIUM)
+const handleStateOnInit = (): void => {
+  handleStateChangeWithElements(stateManager.currentState)
+}
+
+handleStateOnInit()
+stateManager.subscribe(handleStateChangeWithElements)
+
+lengthRangeInput.addEventListener('input', handleSelectedLengthChange(stateManager))
+includesUppercaseCheckbox.addEventListener('input', handleCheckboxOptionChange(stateManager))
+includesLowercaseCheckbox.addEventListener('input', handleCheckboxOptionChange(stateManager))
+includesNumbersCheckbox.addEventListener('input', handleCheckboxOptionChange(stateManager))
+includesSymbolsCheckbox.addEventListener('input', handleCheckboxOptionChange(stateManager))
+generatePasswordButton.addEventListener('click', handleGeneratePassword(stateManager))
