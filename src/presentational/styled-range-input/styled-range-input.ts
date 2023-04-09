@@ -1,4 +1,4 @@
-import { ComponentStrategy } from '../../types/ComponentStrategy'
+import { ComponentStrategy } from '../../types/interfaces/ComponentStrategy'
 
 export class StyledRangeInput implements ComponentStrategy<HTMLInputElement> {
   private element: HTMLInputElement

@@ -1,5 +1,5 @@
 import { PubSub } from './pubsub'
-import type { PasswordGeneratorState } from './types/PasswordGeneratorState'
+import type { PasswordGeneratorState } from '../types/interfaces/PasswordGeneratorState'
 
 export class StateManager {
   private static instance: StateManager | null = null
