@@ -5,6 +5,7 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest'
 import { StyledRangeInput } from './styled-range-input'
 import { PasswordGeneratorState } from '../../types/interfaces/PasswordGeneratorState'
+import { PasswordStrengths } from '../../types/enums/PasswordStrengths'
 
 describe('StyledRangeInput', () => {
   let inputElement: HTMLInputElement
@@ -21,6 +22,7 @@ describe('StyledRangeInput', () => {
       includesNumbers: true,
       includesSymbols: true,
       currentPassword: '',
+      passwordStrength: PasswordStrengths.STRONG,
     }
 
     styledRangeInput = new StyledRangeInput(inputElement, state)

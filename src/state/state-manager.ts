@@ -1,5 +1,7 @@
 import { PubSub } from './pubsub'
 import type { PasswordGeneratorState } from '../types/interfaces/PasswordGeneratorState'
+import { PasswordStrengths } from '../types/enums/PasswordStrengths'
+import { evaluatePasswordStrengthBasedOnState } from '../libs/password-strength-evaluator'
 
 export class StateManager {
   private static instance: StateManager | null = null
@@ -16,6 +18,7 @@ export class StateManager {
         includesNumbers: true,
         includesSymbols: true,
         currentPassword: '',
+        passwordStrength: PasswordStrengths.STRONG,
       },
       {
         set: (state, prop, value) => {
@@ -48,6 +51,9 @@ export class StateManager {
     for (const prop in newState) {
       this.state[prop] = newState[prop]
     }
+
+    const passwordStrength = evaluatePasswordStrengthBasedOnState(this.state)
+    this.state.passwordStrength = passwordStrength
   }
 
   public handleLengthChange(newLength: number): void {

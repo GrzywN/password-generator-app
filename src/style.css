@@ -35,7 +35,7 @@
   .input-checkbox:checked {
     @apply bg-primary-400 relative border-none;
 
-    background-image: url('../public/images/icon-check.svg');
+    background-image: url('/images/icon-check.svg');
     background-position: center 65%;
     background-repeat: no-repeat;
   }

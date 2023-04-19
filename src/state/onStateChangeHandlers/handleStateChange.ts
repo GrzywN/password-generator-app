@@ -16,6 +16,7 @@ export interface DomElements {
   includesLowercaseCheckbox: HTMLInputElement
   includesNumbersCheckbox: HTMLInputElement
   includesSymbolsCheckbox: HTMLInputElement
+  passwordStrengthIndicatorContainer: HTMLDivElement
 }
 
 export function handleStateChange(domElements: DomElements): (state: PasswordGeneratorState) => void {
@@ -27,6 +28,7 @@ export function handleStateChange(domElements: DomElements): (state: PasswordGen
     includesLowercaseCheckbox,
     includesNumbersCheckbox,
     includesSymbolsCheckbox,
+    passwordStrengthIndicatorContainer,
   } = domElements
 
   return (state: PasswordGeneratorState) => {
@@ -37,9 +39,6 @@ export function handleStateChange(domElements: DomElements): (state: PasswordGen
     handleIncludeLowercaseCheckboxView(state, includesLowercaseCheckbox)
     handleIncludeNumbersCheckboxView(state, includesNumbersCheckbox)
     handleIncludeSymbolsCheckboxView(state, includesSymbolsCheckbox)
-
-    // TODO:    refactor PasswordStrengthIndicator to a presentational component
-    //          and make it consistent (also pass an element)
-    handlePasswordStrengthIndicatorView(state)
+    handlePasswordStrengthIndicatorView(state, passwordStrengthIndicatorContainer)
   }
 }

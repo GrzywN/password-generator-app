@@ -15,6 +15,9 @@ const includesNumbersCheckbox = document.querySelector<HTMLInputElement>('[name=
 const includesSymbolsCheckbox = document.querySelector<HTMLInputElement>('[name="includesSymbols"]')
 const generatePasswordButton = document.querySelector<HTMLButtonElement>('[data-pg-password-generate-button]')
 const lengthRangeInput = document.querySelector<HTMLInputElement>('[data-pg-length-range-input]')
+const passwordStrengthIndicatorContainer = document.querySelector<HTMLDivElement>(
+  '[data-pg-password-strength-indicator]',
+)
 
 if (
   passwordPreview == null ||
@@ -24,7 +27,8 @@ if (
   includesNumbersCheckbox == null ||
   includesSymbolsCheckbox == null ||
   generatePasswordButton == null ||
-  lengthRangeInput == null
+  lengthRangeInput == null ||
+  passwordStrengthIndicatorContainer == null
 ) {
   throw new Error('main.ts: One of the elements is null. At this point, app would break anyway.')
 }
@@ -39,6 +43,7 @@ const handleStateChangeWithElements = handleStateChange({
   includesNumbersCheckbox,
   includesSymbolsCheckbox,
   lengthRangeInput,
+  passwordStrengthIndicatorContainer,
 })
 
 const handleStateOnInit = (): void => {

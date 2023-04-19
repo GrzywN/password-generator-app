@@ -1,8 +1,16 @@
 import { PasswordGeneratorState } from '../../types/interfaces/PasswordGeneratorState'
-import { evaluatePasswordStrengthBasedOnState } from '../../libs/password-strength-evaluator'
-import { displayPasswordStrength } from '../../modules/display-password-strength'
+import { PasswordStrengthIndicator } from '../../presentational/password-strength-indicator'
 
-export function handlePasswordStrengthIndicatorView(state: PasswordGeneratorState): void {
-  const passwordStrength = evaluatePasswordStrengthBasedOnState(state)
-  displayPasswordStrength('data-pg-password-strength', passwordStrength)
+let indicator: PasswordStrengthIndicator | null = null
+
+export function handlePasswordStrengthIndicatorView(
+  state: PasswordGeneratorState,
+  element: HTMLDivElement,
+): void {
+  if (indicator == null) {
+    indicator = new PasswordStrengthIndicator(element, state)
+    indicator.setup()
+  }
+
+  indicator.handleStateChange(state)
 }

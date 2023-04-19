@@ -1,3 +1,5 @@
+import { PasswordStrengths } from '../enums/PasswordStrengths'
+
 export interface PasswordGeneratorState {
   selectedLength: number
   includesUppercase: boolean
@@ -5,4 +7,5 @@ export interface PasswordGeneratorState {
   includesNumbers: boolean
   includesSymbols: boolean
   currentPassword: string
+  passwordStrength: PasswordStrengths
 }
