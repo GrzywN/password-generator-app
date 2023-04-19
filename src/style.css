@@ -28,6 +28,18 @@
     @apply font-mono font-bold text-base leading-[1.312rem];
   }
 
+  .input-checkbox {
+    @apply appearance-none border-[2px] border-white w-5 h-5 bg-transparent;
+  }
+
+  .input-checkbox:checked {
+    @apply bg-primary-400 relative border-none;
+
+    background-image: url('../public/images/icon-check.svg');
+    background-position: center 65%;
+    background-repeat: no-repeat;
+  }
+
   .input-range {
     @apply appearance-none w-full bg-transparent;
   }

@@ -7,6 +7,7 @@ const veryDarkGray = '#18171f'
 const yellow = '#f8cd65'
 const orange = '#fb7c58'
 const red = '#f64a4a'
+const white = '#ffffff'
 
 module.exports = {
   content: ['./index.html', './src/**/*.ts'],
@@ -32,6 +33,7 @@ module.exports = {
         400: neonGreen,
       },
       transparent: 'transparent',
+      white,
     },
     extend: {},
   },
