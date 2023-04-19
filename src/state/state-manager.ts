@@ -53,7 +53,9 @@ export class StateManager {
     }
 
     const passwordStrength = evaluatePasswordStrengthBasedOnState(this.state)
-    this.state.passwordStrength = passwordStrength
+    if (passwordStrength !== this.state.passwordStrength) {
+      this.state.passwordStrength = passwordStrength
+    }
   }
 
   public handleLengthChange(newLength: number): void {
