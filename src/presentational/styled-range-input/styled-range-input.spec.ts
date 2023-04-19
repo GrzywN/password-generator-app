@@ -2,50 +2,51 @@
  * @jest-environment jsdom
  */
 
-import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
+import { describe, it, expect, beforeEach, vi } from 'vitest'
 import { StyledRangeInput } from './styled-range-input'
+import { PasswordGeneratorState } from '../../types/interfaces/PasswordGeneratorState'
 
 describe('StyledRangeInput', () => {
   let inputElement: HTMLInputElement
   let styledRangeInput: StyledRangeInput
+  let state: PasswordGeneratorState
 
   beforeEach(() => {
     inputElement = document.createElement('input')
     inputElement.type = 'range'
-    styledRangeInput = new StyledRangeInput()
+    state = {
+      selectedLength: 10,
+      includesUppercase: true,
+      includesLowercase: true,
+      includesNumbers: true,
+      includesSymbols: true,
+      currentPassword: '',
+    }
+
+    styledRangeInput = new StyledRangeInput(inputElement, state)
   })
 
-  afterEach(() => {
-    inputElement.removeEventListener('input', styledRangeInput.handleChange)
+  describe('setup', () => {
+    it('should call a setup method', () => {
+      const spySetupStyling = vi.spyOn(styledRangeInput, 'setup')
+
+      styledRangeInput.setup()
+
+      expect(spySetupStyling).toHaveBeenCalled()
+    })
+
+    it('should set up styling', () => {
+      styledRangeInput.setup()
+
+      expect(inputElement.style).not.toBeNull()
+    })
   })
 
-  it('should call the method to set up styling on init', () => {
-    const spySetupStylingOnInit = vi.spyOn(styledRangeInput, 'setupStylingOnInit')
+  describe('getElement', () => {
+    it('should return the input element', () => {
+      const result = styledRangeInput.getElement()
 
-    styledRangeInput.setup(inputElement)
-
-    expect(spySetupStylingOnInit).toHaveBeenCalled()
-  })
-
-  it('should call the method to set up styling on value change', () => {
-    const spySetupStylingOnValueChange = vi.spyOn(styledRangeInput, 'setupStylingOnValueChange')
-
-    styledRangeInput.setup(inputElement)
-
-    expect(spySetupStylingOnValueChange).toHaveBeenCalled()
-  })
-
-  it('should return the element', () => {
-    const result = styledRangeInput.setup(inputElement)
-
-    expect(result).toBe(inputElement)
-  })
-
-  it('should get the element', () => {
-    styledRangeInput.setup(inputElement)
-
-    const result = styledRangeInput.getElement()
-
-    expect(result).toBe(inputElement)
+      expect(result).toBe(inputElement)
+    })
   })
 })

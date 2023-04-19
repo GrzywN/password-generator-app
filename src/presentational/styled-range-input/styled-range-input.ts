@@ -1,43 +1,57 @@
-import { ComponentStrategy } from '../../types/interfaces/ComponentStrategy'
+import { RANGE_INPUT_SCALE_BASED_ON_HUNDRED_DIVISION } from '../../constants'
+import { StatefulComponentStrategy } from '../../types/interfaces/ComponentStrategy'
+import { PasswordGeneratorState } from '../../types/interfaces/PasswordGeneratorState'
 
-export class StyledRangeInput implements ComponentStrategy<HTMLInputElement> {
-  private element: HTMLInputElement
+export class StyledRangeInput implements StatefulComponentStrategy<HTMLInputElement> {
+  private readonly element: HTMLInputElement
+  private state: PasswordGeneratorState
 
-  public setup(element: HTMLInputElement): HTMLInputElement {
+  constructor(element: HTMLInputElement, state: PasswordGeneratorState) {
     this.element = element
-    this.setupStyling()
+    this.state = state
+  }
 
-    return this.element
+  public setup(): void {
+    this.setupStyling()
   }
 
   public getElement(): HTMLInputElement {
     return this.element
   }
 
+  public handleStateChange(newState: PasswordGeneratorState): void {
+    this.state = newState
+
+    this.setBackgroundBasedOnState()
+    this.setElementValueBasedOnState()
+  }
+
   private setupStyling(): void {
     this.setupStylingOnInit()
-    this.setupStylingOnValueChange()
   }
 
   private setupStylingOnInit(): void {
-    this.setBackgroundBasedOnInputValue()
+    this.setBackgroundBasedOnState()
   }
 
-  private setupStylingOnValueChange(): void {
-    this.element.addEventListener('input', this.handleChange)
-  }
-
-  private readonly handleChange = (): void => {
-    this.setBackgroundBasedOnInputValue()
-  }
-
-  private setBackgroundBasedOnInputValue(): void {
+  private setBackgroundBasedOnState(): void {
     this.element.style.backgroundImage = `
 	    linear-gradient(to right,
 	    var(--color-primary-400) 0%,
-    	var(--color-primary-400) ${this.element.value}%,
-    	var(--color-neutral-700) ${this.element.value}%,
+    	var(--color-primary-400) ${
+        (this.state.selectedLength - 1) * RANGE_INPUT_SCALE_BASED_ON_HUNDRED_DIVISION
+      }%,
+    	var(--color-neutral-700) ${
+        (this.state.selectedLength - 1) * RANGE_INPUT_SCALE_BASED_ON_HUNDRED_DIVISION
+      }%,
     	var(--color-neutral-700) 100%)`
+  }
+
+  private setElementValueBasedOnState(): void {
+    this.element.value = (
+      (this.state.selectedLength - 1) *
+      RANGE_INPUT_SCALE_BASED_ON_HUNDRED_DIVISION
+    ).toString()
   }
 }
 

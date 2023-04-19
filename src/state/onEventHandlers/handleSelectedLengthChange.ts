@@ -1,3 +1,4 @@
+import { RANGE_INPUT_SCALE_BASED_ON_HUNDRED_DIVISION } from '../../constants'
 import { StateManager } from '../state-manager'
 
 export function handleSelectedLengthChange(stateManager: StateManager): (event: Event) => void {
@@ -8,7 +9,7 @@ export function handleSelectedLengthChange(stateManager: StateManager): (event: 
       return
     }
 
-    const newLength = parseInt((inputValue / 5).toString())
+    const newLength = parseInt((inputValue / RANGE_INPUT_SCALE_BASED_ON_HUNDRED_DIVISION).toString()) + 1
     stateManager.handleLengthChange(newLength)
   }
 }

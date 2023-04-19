@@ -1,12 +1,13 @@
+import { StyledRangeInput } from '../../presentational/styled-range-input'
 import { PasswordGeneratorState } from '../../types/interfaces/PasswordGeneratorState'
 
-let timeout: ReturnType<typeof setTimeout>
+let styledRangeInput: StyledRangeInput | null = null
 
 export function handleRangeInputView(state: PasswordGeneratorState, element: HTMLInputElement): void {
-  element.value = (state.selectedLength * 5).toString()
+  if (styledRangeInput == null) {
+    styledRangeInput = new StyledRangeInput(element, state)
+    styledRangeInput.setup()
+  }
 
-  clearTimeout(timeout)
-  timeout = setTimeout(() => {
-    element.dispatchEvent(new Event('input'))
-  }, 60)
+  styledRangeInput.handleStateChange(state)
 }

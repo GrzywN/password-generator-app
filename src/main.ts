@@ -1,4 +1,3 @@
-import { StyledRangeInput } from './presentational/styled-range-input'
 import { StateManager } from './state/state-manager'
 import {
   handleSelectedLengthChange,
@@ -30,9 +29,8 @@ if (
   throw new Error('main.ts: One of the elements is null. At this point, app would break anyway.')
 }
 
-new StyledRangeInput().setup(lengthRangeInput)
-
 const stateManager: StateManager = StateManager.getInstance()
+
 const handleStateChangeWithElements = handleStateChange({
   passwordPreview,
   lengthIndicator,
