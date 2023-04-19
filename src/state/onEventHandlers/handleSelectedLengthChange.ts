@@ -1,4 +1,4 @@
-import { RANGE_INPUT_SCALE_BASED_ON_HUNDRED_DIVISION } from '../../constants'
+import { RANGE_INPUT_SCALE_BASED_ON_HUNDRED_DIVISION } from '../../utils/constants'
 import { StateManager } from '../state-manager'
 
 export function handleSelectedLengthChange(stateManager: StateManager): (event: Event) => void {
