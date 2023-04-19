@@ -1,5 +1,5 @@
 import { StateManager } from '../state-manager'
-import { generatePassword } from '../../utils/password-generator'
+import { generatePassword } from '../../libs/password-generator'
 
 export function handleGeneratePassword(stateManager: StateManager): () => void {
   return () => {
