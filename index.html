@@ -6,121 +6,108 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png" />
     <title>Frontend Mentor | Password generator app</title>
   </head>
-
-  <body class="min-h-screen bg-neutral-700 grid place-items-center">
-    <main class="max-w-[21.438rem] md:max-w-[33.750rem] w-full">
-      <h1
-        class="font-mono font-bold text-base text-neutral-300 text-center tracking-normal leading-[1.312rem] md:text-2xl"
-      >
-        Password Generator
-      </h1>
-      <div
-        class="mt-4 h-16 bg-neutral-500 px-4 flex justify-between items-center gap-4 md:mt-6 md:h-20 md:px-8 md:py-[1.188rem]"
-      >
-        <h2 class="text-neutral-50 heading-m opacity-25 md:heading-l" data-pg-generated-password>
-          P4$5W0rD!
-        </h2>
-        <button type="button" class="w-[17.0.312rem] h-5 md:w-[1.312rem] md:h-6" title="Copy to clipboard.">
-          <img
-            class="object-cover"
-            src="images/icon-copy.svg"
-            alt="Copy the generated password to clipboard."
-          />
-        </button>
-      </div>
-      <div class="mt-4 p-4 bg-neutral-500 md:mt-6 md:p-8 md:pt-6">
-        <div class="h-[1.938rem] flex items-center justify-between md:h-[2.688rem]">
-          <span class="text-neutral-50 body-s md:body-m">Character Length</span>
-          <span class="text-primary-400 heading-m md:heading-l" data-pg-length-indicator>10</span>
+  <body>
+    <main>
+      <article class="PasswordGenerator">
+        <h1 class="Title">Password Generator</h1>
+        <div class="GeneratedPasswordField">
+          <h2
+            class="GeneratedPasswordField__password"
+            aria-label="Generated password"
+            aria-placeholder="P4$5W0rD!"
+            data-pg-generated-password
+          ></h2>
+          <button class="CopyToClipboardButton" title="Copy to clipboard.">
+            <img
+              class="CopyToClipboardButton__icon"
+              src="images/icon-copy.svg"
+              alt="Copy the generated password to clipboard."
+            />
+          </button>
         </div>
-        <form>
-          <input
-            class="input-range mt-[1.125rem] w-full appearance-none bg-input-range h-2 md:mt-[1.625rem]"
-            type="range"
-            min="1"
-            max="100"
-            value="50"
-            data-pg-length-range-input
-          />
-          <ul class="mt-[2.625rem] text-neutral-50 body-s grid gap-4 md:body-m md:gap-5">
-            <li class="flex gap-5 md:gap-6">
-              <input class="input-checkbox" type="checkbox" id="include-uppercase" name="includesUppercase" />
-              <label class="select-none" for="include-uppercase">Include Uppercase Letters</label>
-            </li>
-            <li class="flex gap-5 md:gap-6">
-              <input class="input-checkbox" type="checkbox" id="include-lowercase" name="includesLowercase" />
-              <label class="select-none" for="include-lowercase">Include Lowercase Letters</label>
-            </li>
-            <li class="flex gap-5 md:gap-6">
-              <input class="input-checkbox" type="checkbox" id="include-numbers" name="includesNumbers" />
-              <label class="select-none" for="include-numbers">Include Numbers</label>
-            </li>
-            <li class="flex gap-5 md:gap-6">
-              <input class="input-checkbox" type="checkbox" id="include-symbols" name="includesSymbols" />
-              <label class="select-none" for="include-symbols">Include Symbols</label>
-            </li>
-          </ul>
-        </form>
-        <div
-          class="bg-neutral-700 px-4 py-[0.875rem] h-14 uppercase text-neutral-300 body-s mt-8 flex items-center justify-between md:px-8 md:py-5 md:h-[4.500rem] md:body-m"
-        >
-          Strength
-          <div data-pg-password-strength-indicator>
-            <template data-pg-password-strength="too-weak">
-              <span class="flex gap-4 text-neutral-50 body-m uppercase md:heading-m">
-                Too weak!
-                <div class="flex gap-2 h-[1.750rem]" aria-hidden="true">
-                  <div class="w-[0.625rem] h-full bg-danger-400"></div>
-                  <div class="w-[0.625rem] h-full border-neutral-50 border-[2px]"></div>
-                  <div class="w-[0.625rem] h-full border-neutral-50 border-[2px]"></div>
-                  <div class="w-[0.625rem] h-full border-neutral-50 border-[2px]"></div>
-                </div>
-              </span>
-            </template>
-            <template data-pg-password-strength="weak">
-              <span class="flex gap-4 text-neutral-50 body-m uppercase md:heading-m">
-                Weak
-                <div class="flex gap-2 h-[1.750rem]" aria-hidden="true">
-                  <div class="w-[0.625rem] h-full bg-warning-500"></div>
-                  <div class="w-[0.625rem] h-full bg-warning-500"></div>
-                  <div class="w-[0.625rem] h-full border-neutral-50 border-[2px]"></div>
-                  <div class="w-[0.625rem] h-full border-neutral-50 border-[2px]"></div>
-                </div>
-              </span>
-            </template>
-            <template data-pg-password-strength="medium">
-              <span class="flex gap-4 text-neutral-50 body-m uppercase md:heading-m">
-                Medium
-                <div class="flex gap-2 h-[1.750rem]" aria-hidden="true">
-                  <div class="w-[0.625rem] h-full bg-warning-300"></div>
-                  <div class="w-[0.625rem] h-full bg-warning-300"></div>
-                  <div class="w-[0.625rem] h-full bg-warning-300"></div>
-                  <div class="w-[0.625rem] h-full border-neutral-50 border-[2px]"></div>
-                </div>
-              </span>
-            </template>
-            <template data-pg-password-strength="strong">
-              <span class="flex gap-4 text-neutral-50 body-m uppercase md:heading-m">
-                Strong
-                <div class="flex gap-2 h-[1.750rem]" aria-hidden="true">
-                  <div class="w-[0.625rem] h-full bg-primary-400"></div>
-                  <div class="w-[0.625rem] h-full bg-primary-400"></div>
-                  <div class="w-[0.625rem] h-full bg-primary-400"></div>
-                  <div class="w-[0.625rem] h-full bg-primary-400"></div>
-                </div>
-              </span>
-            </template>
-          </div>
+        <div class="PasswordGenerator__setup">
+          <section class="PasswordLengthIndicator" aria-label="Password length preview">
+            <span class="PasswordLengthIndicator__label">Character Length</span>
+            <span class="PasswordLengthIndicator__count" data-pg-length-indicator>10</span>
+          </section>
+          <section aria-label="What the password should contain and how long it should be.">
+            <input class="RangeInput" type="range" min="1" max="100" value="50" data-pg-length-range-input />
+            <ul class="IncludeFieldsList">
+              <li class="IncludeFieldsList__item">
+                <input class="Checkbox" type="checkbox" id="include-uppercase" name="includesUppercase" />
+                <label class="InputLabel" for="include-uppercase">Include Uppercase Letters</label>
+              </li>
+              <li class="IncludeFieldsList__item">
+                <input class="Checkbox" type="checkbox" id="include-lowercase" name="includesLowercase" />
+                <label class="InputLabel" for="include-lowercase">Include Lowercase Letters</label>
+              </li>
+              <li class="IncludeFieldsList__item">
+                <input class="Checkbox" type="checkbox" id="include-numbers" name="includesNumbers" />
+                <label class="InputLabel" for="include-numbers">Include Numbers</label>
+              </li>
+              <li class="IncludeFieldsList__item">
+                <input class="Checkbox" type="checkbox" id="include-symbols" name="includesSymbols" />
+                <label class="InputLabel" for="include-symbols">Include Symbols</label>
+              </li>
+            </ul>
+          </section>
+          <section class="PasswordStrengthIndicator" aria-label="Strength of the newly generated password">
+            <h2 class="PasswordStrengthIndicator__title">Strength</h2>
+            <div data-pg-password-strength-indicator>
+              <template data-pg-password-strength="too-weak">
+                <span class="PasswordStrengthIndicator__indicator">
+                  <h3 class="PasswordStrengthIndicator__label">Too weak!</h3>
+                  <div class="PasswordStrengthIndicator__bars" aria-hidden="true">
+                    <div
+                      class="PasswordStrengthIndicator__bar PasswordStrengthIndicator__bar--too-weak"
+                    ></div>
+                    <div class="PasswordStrengthIndicator__bar PasswordStrengthIndicator__bar--empty"></div>
+                    <div class="PasswordStrengthIndicator__bar PasswordStrengthIndicator__bar--empty"></div>
+                    <div class="PasswordStrengthIndicator__bar PasswordStrengthIndicator__bar--empty"></div>
+                  </div>
+                </span>
+              </template>
+              <template data-pg-password-strength="weak">
+                <span class="PasswordStrengthIndicator__indicator">
+                  <h3 class="PasswordStrengthIndicator__label">Weak</h3>
+                  <div class="PasswordStrengthIndicator__bars" aria-hidden="true">
+                    <div class="PasswordStrengthIndicator__bar PasswordStrengthIndicator__bar--weak"></div>
+                    <div class="PasswordStrengthIndicator__bar PasswordStrengthIndicator__bar--weak"></div>
+                    <div class="PasswordStrengthIndicator__bar PasswordStrengthIndicator__bar--empty"></div>
+                    <div class="PasswordStrengthIndicator__bar PasswordStrengthIndicator__bar--empty"></div>
+                  </div>
+                </span>
+              </template>
+              <template data-pg-password-strength="medium">
+                <span class="PasswordStrengthIndicator__indicator">
+                  <h3 class="PasswordStrengthIndicator__label">Medium</h3>
+                  <div class="PasswordStrengthIndicator__bars" aria-hidden="true">
+                    <div class="PasswordStrengthIndicator__bar PasswordStrengthIndicator__bar--medium"></div>
+                    <div class="PasswordStrengthIndicator__bar PasswordStrengthIndicator__bar--medium"></div>
+                    <div class="PasswordStrengthIndicator__bar PasswordStrengthIndicator__bar--medium"></div>
+                    <div class="PasswordStrengthIndicator__bar PasswordStrengthIndicator__bar--empty"></div>
+                  </div>
+                </span>
+              </template>
+              <template data-pg-password-strength="strong">
+                <span class="PasswordStrengthIndicator__indicator">
+                  <h3 class="PasswordStrengthIndicator__label">Strong</h3>
+                  <div class="PasswordStrengthIndicator__bars" aria-hidden="true">
+                    <div class="PasswordStrengthIndicator__bar PasswordStrengthIndicator__bar--strong"></div>
+                    <div class="PasswordStrengthIndicator__bar PasswordStrengthIndicator__bar--strong"></div>
+                    <div class="PasswordStrengthIndicator__bar PasswordStrengthIndicator__bar--strong"></div>
+                    <div class="PasswordStrengthIndicator__bar PasswordStrengthIndicator__bar--strong"></div>
+                  </div>
+                </span>
+              </template>
+            </div>
+          </section>
+          <button class="Button Button--primary" data-pg-password-generate-button>
+            Generate
+            <img class="Button__icon" src="/images/icon-arrow-right.svg" alt="" />
+          </button>
         </div>
-        <button
-          class="flex justify-center items-center gap-4 mt-4 w-full h-14 md:h-[4.062rem] bg-primary-400 uppercase body-s md:gap-6 md:body-m md:mt-8"
-          type="button"
-          data-pg-password-generate-button
-        >
-          Generate
-          <img class="h-3" src="/images/icon-arrow-right.svg" alt="" />
-        </button>
-      </div>
+      </article>
     </main>
     <script type="module" src="/src/main.ts"></script>
   </body>
