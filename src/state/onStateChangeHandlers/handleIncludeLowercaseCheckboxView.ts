@@ -1,8 +1,8 @@
-import { PasswordGeneratorState } from '../../types/interfaces/PasswordGeneratorState'
+import { PasswordGeneratorState } from '../../types/interfaces/PasswordGeneratorState';
 
 export function handleIncludeLowercaseCheckboxView(
   state: PasswordGeneratorState,
-  element: HTMLInputElement,
+  element: HTMLInputElement
 ): void {
-  element.checked = state.includesLowercase
+  element.checked = state.includesLowercase;
 }

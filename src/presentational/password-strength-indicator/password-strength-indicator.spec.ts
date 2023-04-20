@@ -2,16 +2,16 @@
  * @jest-environment jsdom
  */
 
-import { describe, beforeEach, it, expect } from 'vitest'
-import { PasswordStrengths } from '../../types/enums/PasswordStrengths'
-import { PasswordStrengthIndicator } from './password-strength-indicator'
+import { describe, beforeEach, it, expect } from 'vitest';
+import { PasswordStrengths } from '../../types/enums/PasswordStrengths';
+import { PasswordStrengthIndicator } from './password-strength-indicator';
 
 describe('PasswordStrengthIndicator', () => {
-  let indicatorElement: HTMLDivElement
-  let indicator: PasswordStrengthIndicator
+  let indicatorElement: HTMLDivElement;
+  let indicator: PasswordStrengthIndicator;
 
   beforeEach(() => {
-    indicatorElement = document.createElement('div')
+    indicatorElement = document.createElement('div');
     indicatorElement.innerHTML = `
       <template data-pg-password-strength="too-weak">
         <div class="too-weak-indicator"></div>
@@ -25,7 +25,7 @@ describe('PasswordStrengthIndicator', () => {
       <template data-pg-password-strength="strong">
         <div class="strong-indicator"></div>
       </template>
-    `
+    `;
 
     const initialState = {
       selectedLength: 4,
@@ -35,20 +35,20 @@ describe('PasswordStrengthIndicator', () => {
       includesSymbols: true,
       currentPassword: '',
       passwordStrength: PasswordStrengths.TOO_WEAK,
-    }
+    };
 
-    indicator = new PasswordStrengthIndicator(indicatorElement, initialState)
-    indicator.setup()
-  })
+    indicator = new PasswordStrengthIndicator(indicatorElement, initialState);
+    indicator.setup();
+  });
 
   describe('handleStateChange', () => {
     it('should set the password strength indicator to "too weak"', () => {
       const templateElement = indicatorElement.querySelector(
-        '[data-pg-password-strength="too-weak"]',
-      ) as HTMLTemplateElement
-      const expectedContent = templateElement.content.cloneNode(true)
-      const expectedIndicator = document.createElement('div')
-      expectedIndicator.appendChild(expectedContent)
+        '[data-pg-password-strength="too-weak"]'
+      ) as HTMLTemplateElement;
+      const expectedContent = templateElement.content.cloneNode(true);
+      const expectedIndicator = document.createElement('div');
+      expectedIndicator.appendChild(expectedContent);
 
       const newState = {
         selectedLength: 4,
@@ -58,19 +58,19 @@ describe('PasswordStrengthIndicator', () => {
         includesSymbols: true,
         currentPassword: '',
         passwordStrength: PasswordStrengths.TOO_WEAK,
-      }
-      indicator.handleStateChange(newState)
+      };
+      indicator.handleStateChange(newState);
 
-      expect(indicatorElement.innerHTML).toEqual(expectedIndicator.innerHTML)
-    })
+      expect(indicatorElement.innerHTML).toEqual(expectedIndicator.innerHTML);
+    });
 
     it('should set the password strength indicator to "weak"', () => {
       const templateElement = indicatorElement.querySelector(
-        '[data-pg-password-strength="weak"]',
-      ) as HTMLTemplateElement
-      const expectedContent = templateElement.content.cloneNode(true)
-      const expectedIndicator = document.createElement('div')
-      expectedIndicator.appendChild(expectedContent)
+        '[data-pg-password-strength="weak"]'
+      ) as HTMLTemplateElement;
+      const expectedContent = templateElement.content.cloneNode(true);
+      const expectedIndicator = document.createElement('div');
+      expectedIndicator.appendChild(expectedContent);
 
       const newState = {
         selectedLength: 7,
@@ -80,19 +80,19 @@ describe('PasswordStrengthIndicator', () => {
         includesSymbols: false,
         currentPassword: '',
         passwordStrength: PasswordStrengths.WEAK,
-      }
-      indicator.handleStateChange(newState)
+      };
+      indicator.handleStateChange(newState);
 
-      expect(indicatorElement.innerHTML).toEqual(expectedIndicator.innerHTML)
-    })
+      expect(indicatorElement.innerHTML).toEqual(expectedIndicator.innerHTML);
+    });
 
     it('should set the password strength indicator to "medium"', () => {
       const templateElement = indicatorElement.querySelector(
-        '[data-pg-password-strength="medium"]',
-      ) as HTMLTemplateElement
-      const expectedContent = templateElement.content.cloneNode(true)
-      const expectedIndicator = document.createElement('div')
-      expectedIndicator.appendChild(expectedContent)
+        '[data-pg-password-strength="medium"]'
+      ) as HTMLTemplateElement;
+      const expectedContent = templateElement.content.cloneNode(true);
+      const expectedIndicator = document.createElement('div');
+      expectedIndicator.appendChild(expectedContent);
 
       const newState = {
         selectedLength: 10,
@@ -102,19 +102,19 @@ describe('PasswordStrengthIndicator', () => {
         includesSymbols: false,
         currentPassword: '',
         passwordStrength: PasswordStrengths.MEDIUM,
-      }
-      indicator.handleStateChange(newState)
+      };
+      indicator.handleStateChange(newState);
 
-      expect(indicatorElement.innerHTML).toEqual(expectedIndicator.innerHTML)
-    })
+      expect(indicatorElement.innerHTML).toEqual(expectedIndicator.innerHTML);
+    });
 
     it('should set the password strength indicator to "strong"', () => {
       const templateElement = indicatorElement.querySelector(
-        '[data-pg-password-strength="strong"]',
-      ) as HTMLTemplateElement
-      const expectedContent = templateElement.content.cloneNode(true)
-      const expectedIndicator = document.createElement('div')
-      expectedIndicator.appendChild(expectedContent)
+        '[data-pg-password-strength="strong"]'
+      ) as HTMLTemplateElement;
+      const expectedContent = templateElement.content.cloneNode(true);
+      const expectedIndicator = document.createElement('div');
+      expectedIndicator.appendChild(expectedContent);
 
       const newState = {
         selectedLength: 10,
@@ -124,11 +124,11 @@ describe('PasswordStrengthIndicator', () => {
         includesSymbols: true,
         currentPassword: '',
         passwordStrength: PasswordStrengths.STRONG,
-      }
-      indicator.handleStateChange(newState)
+      };
+      indicator.handleStateChange(newState);
 
-      expect(indicatorElement.innerHTML).toEqual(expectedIndicator.innerHTML)
-    })
+      expect(indicatorElement.innerHTML).toEqual(expectedIndicator.innerHTML);
+    });
 
     it('should throw an error if an invalid password strength is provided', () => {
       const newState = {
@@ -139,11 +139,11 @@ describe('PasswordStrengthIndicator', () => {
         includesSymbols: true,
         currentPassword: '',
         passwordStrength: 'invalid-strength' as PasswordStrengths,
-      }
+      };
 
       expect(() => {
-        indicator.handleStateChange(newState)
-      }).toThrow('password-strength-indicator: Wrong password strength provided.')
-    })
-  })
-})
+        indicator.handleStateChange(newState);
+      }).toThrow('password-strength-indicator: Wrong password strength provided.');
+    });
+  });
+});

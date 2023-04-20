@@ -1,1 +1,1 @@
-export * from './handleStateChange'
+export * from './handleStateChange';

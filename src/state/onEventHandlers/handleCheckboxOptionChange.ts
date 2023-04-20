@@ -1,9 +1,9 @@
-import { StateManager } from '../state-manager'
+import { StateManager } from '../state-manager';
 
 export function handleCheckboxOptionChange(stateManager: StateManager): (event: Event) => void {
   return (event: Event) => {
-    const optionName = (event.target as HTMLInputElement).name
-    const isChecked = (event.target as HTMLInputElement).checked
+    const optionName = (event.target as HTMLInputElement).name;
+    const isChecked = (event.target as HTMLInputElement).checked;
 
     if (
       isChecked != null &&
@@ -12,7 +12,7 @@ export function handleCheckboxOptionChange(stateManager: StateManager): (event: 
         optionName === 'includesSymbols' ||
         optionName === 'includesNumbers')
     ) {
-      stateManager.handleOptionChange(optionName, isChecked)
+      stateManager.handleOptionChange(optionName, isChecked);
     }
-  }
+  };
 }

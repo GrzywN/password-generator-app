@@ -1,1 +1,1 @@
-export * from './password-strength-indicator'
+export * from './password-strength-indicator';

@@ -1,22 +1,22 @@
-import { PasswordGeneratorState } from '../../types/interfaces/PasswordGeneratorState'
-import { handleIncludeLowercaseCheckboxView } from './handleIncludeLowercaseCheckboxView'
-import { handleIncludeNumbersCheckboxView } from './handleIncludeNumbersCheckboxView'
-import { handleIncludeSymbolsCheckboxView } from './handleIncludeSymbolsCheckboxView'
-import { handleIncludeUppercaseCheckboxView } from './handleIncludeUppercaseCheckboxView'
-import { handleLengthIndicatorView } from './handleLengthIndicatorView'
-import { handlePasswordPreviewView } from './handlePasswordPreviewView'
-import { handleRangeInputView } from './handleRangeInputView'
-import { handlePasswordStrengthIndicatorView } from './handlePasswordStrengthIndicatorView'
+import { PasswordGeneratorState } from '../../types/interfaces/PasswordGeneratorState';
+import { handleIncludeLowercaseCheckboxView } from './handleIncludeLowercaseCheckboxView';
+import { handleIncludeNumbersCheckboxView } from './handleIncludeNumbersCheckboxView';
+import { handleIncludeSymbolsCheckboxView } from './handleIncludeSymbolsCheckboxView';
+import { handleIncludeUppercaseCheckboxView } from './handleIncludeUppercaseCheckboxView';
+import { handleLengthIndicatorView } from './handleLengthIndicatorView';
+import { handlePasswordPreviewView } from './handlePasswordPreviewView';
+import { handleRangeInputView } from './handleRangeInputView';
+import { handlePasswordStrengthIndicatorView } from './handlePasswordStrengthIndicatorView';
 
 export interface DomElements {
-  passwordPreview: HTMLElement
-  lengthIndicator: HTMLElement
-  lengthRangeInput: HTMLInputElement
-  includesUppercaseCheckbox: HTMLInputElement
-  includesLowercaseCheckbox: HTMLInputElement
-  includesNumbersCheckbox: HTMLInputElement
-  includesSymbolsCheckbox: HTMLInputElement
-  passwordStrengthIndicatorContainer: HTMLDivElement
+  passwordPreview: HTMLElement;
+  lengthIndicator: HTMLElement;
+  lengthRangeInput: HTMLInputElement;
+  includesUppercaseCheckbox: HTMLInputElement;
+  includesLowercaseCheckbox: HTMLInputElement;
+  includesNumbersCheckbox: HTMLInputElement;
+  includesSymbolsCheckbox: HTMLInputElement;
+  strengthIndicatorContainer: HTMLDivElement;
 }
 
 export function handleStateChange(domElements: DomElements): (state: PasswordGeneratorState) => void {
@@ -28,17 +28,17 @@ export function handleStateChange(domElements: DomElements): (state: PasswordGen
     includesLowercaseCheckbox,
     includesNumbersCheckbox,
     includesSymbolsCheckbox,
-    passwordStrengthIndicatorContainer,
-  } = domElements
+    strengthIndicatorContainer,
+  } = domElements;
 
   return (state: PasswordGeneratorState) => {
-    handlePasswordPreviewView(state, passwordPreview)
-    handleLengthIndicatorView(state, lengthIndicator)
-    handleRangeInputView(state, lengthRangeInput)
-    handleIncludeUppercaseCheckboxView(state, includesUppercaseCheckbox)
-    handleIncludeLowercaseCheckboxView(state, includesLowercaseCheckbox)
-    handleIncludeNumbersCheckboxView(state, includesNumbersCheckbox)
-    handleIncludeSymbolsCheckboxView(state, includesSymbolsCheckbox)
-    handlePasswordStrengthIndicatorView(state, passwordStrengthIndicatorContainer)
-  }
+    handlePasswordPreviewView(state, passwordPreview);
+    handleLengthIndicatorView(state, lengthIndicator);
+    handleRangeInputView(state, lengthRangeInput);
+    handleIncludeUppercaseCheckboxView(state, includesUppercaseCheckbox);
+    handleIncludeLowercaseCheckboxView(state, includesLowercaseCheckbox);
+    handleIncludeNumbersCheckboxView(state, includesNumbersCheckbox);
+    handleIncludeSymbolsCheckboxView(state, includesSymbolsCheckbox);
+    handlePasswordStrengthIndicatorView(state, strengthIndicatorContainer);
+  };
 }

@@ -1,1 +1,1 @@
-export * from './clipboard-util'
+export * from './clipboard-util';

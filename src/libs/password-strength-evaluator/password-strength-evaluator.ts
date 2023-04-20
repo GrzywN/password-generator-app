@@ -1,8 +1,8 @@
-import { PasswordGeneratorState } from '../../types/interfaces/PasswordGeneratorState'
-import { PasswordStrengths } from '../../types/enums/PasswordStrengths'
+import { PasswordGeneratorState } from '../../types/interfaces/PasswordGeneratorState';
+import { PasswordStrengths } from '../../types/enums/PasswordStrengths';
 
-const PASSWORD_LENGTH_WEAK = 6
-const PASSWORD_LENGTH_MEDIUM = 10
+const PASSWORD_LENGTH_WEAK = 6;
+const PASSWORD_LENGTH_MEDIUM = 10;
 
 export function evaluatePasswordStrengthBasedOnState(state: PasswordGeneratorState): PasswordStrengths {
   const {
@@ -12,30 +12,30 @@ export function evaluatePasswordStrengthBasedOnState(state: PasswordGeneratorSta
     includesUppercase,
     includesNumbers,
     includesSymbols,
-  } = state
+  } = state;
 
   const includesAllTypesOfCharacters =
-    includesLowercase && includesUppercase && includesNumbers && includesSymbols
-  const passwordLength = currentPassword.length > 0 ? currentPassword.length : selectedLength
+    includesLowercase && includesUppercase && includesNumbers && includesSymbols;
+  const passwordLength = currentPassword.length > 0 ? currentPassword.length : selectedLength;
 
   if (passwordLength < PASSWORD_LENGTH_WEAK) {
-    return PasswordStrengths.TOO_WEAK
+    return PasswordStrengths.TOO_WEAK;
   }
 
   if (passwordLength < PASSWORD_LENGTH_MEDIUM && !includesAllTypesOfCharacters) {
-    return PasswordStrengths.WEAK
+    return PasswordStrengths.WEAK;
   }
 
   if (passwordLength < PASSWORD_LENGTH_MEDIUM && includesAllTypesOfCharacters) {
-    return PasswordStrengths.MEDIUM
+    return PasswordStrengths.MEDIUM;
   }
 
   if (passwordLength >= PASSWORD_LENGTH_MEDIUM && !includesAllTypesOfCharacters) {
-    return PasswordStrengths.MEDIUM
+    return PasswordStrengths.MEDIUM;
   }
 
   if (passwordLength >= PASSWORD_LENGTH_MEDIUM && includesAllTypesOfCharacters) {
-    return PasswordStrengths.STRONG
+    return PasswordStrengths.STRONG;
   }
 }
 
@@ -47,33 +47,33 @@ export function evaluatePasswordStrengthBasedOnPassword(password: string): Passw
     includesNumbers: hasNumber(password),
     includesSymbols: hasSymbol(password),
     currentPassword: password,
-  }
+  };
 
-  return evaluatePasswordStrengthBasedOnState(state)
+  return evaluatePasswordStrengthBasedOnState(state);
 }
 
 export function hasLowercaseLetter(password: string): boolean {
-  const lowercaseLetterRegex = /[a-z]/
+  const lowercaseLetterRegex = /[a-z]/;
 
-  return lowercaseLetterRegex.test(password)
+  return lowercaseLetterRegex.test(password);
 }
 
 export function hasUppercaseLetter(password: string): boolean {
-  const uppercaseLetterRegex = /[A-Z]/
+  const uppercaseLetterRegex = /[A-Z]/;
 
-  return uppercaseLetterRegex.test(password)
+  return uppercaseLetterRegex.test(password);
 }
 
 export function hasNumber(password: string): boolean {
-  const numberRegex = /[0-9]/
+  const numberRegex = /[0-9]/;
 
-  return numberRegex.test(password)
+  return numberRegex.test(password);
 }
 
 export function hasSymbol(password: string): boolean {
-  const symbolRegex = /[`!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~]/
+  const symbolRegex = /[`!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~]/;
 
-  return symbolRegex.test(password)
+  return symbolRegex.test(password);
 }
 
-export default evaluatePasswordStrengthBasedOnState
+export default evaluatePasswordStrengthBasedOnState;

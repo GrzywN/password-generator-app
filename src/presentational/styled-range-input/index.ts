@@ -1,1 +1,1 @@
-export * from './styled-range-input'
+export * from './styled-range-input';

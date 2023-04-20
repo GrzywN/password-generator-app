@@ -1,1 +1,1 @@
-export * from './password-strength-evaluator'
+export * from './password-strength-evaluator';
