@@ -1,6 +1,8 @@
 .Button {
   font-family: var(--font-monospace);
 
+  border: none;
+
   font-size: 1rem;
   font-weight: 700;
   letter-spacing: 0em;

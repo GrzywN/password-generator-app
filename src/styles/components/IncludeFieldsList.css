@@ -1,5 +1,6 @@
 .IncludeFieldsList {
   margin-top: 2.625rem;
+  padding: 0;
 
   display: grid;
   gap: 1rem;
