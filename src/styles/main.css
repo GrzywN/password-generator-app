@@ -3,6 +3,7 @@
 @import './base/reset.css';
 @import './base/base.css';
 
+@import './components/PasswordGenerator.css';
 @import './components/Title.css';
 @import './components/GeneratedPasswordField.css';
 @import './components/CopyToClipboardButton.css';
@@ -13,7 +14,3 @@
 @import './components/InputLabel.css';
 @import './components/PasswordStrengthIndicator.css';
 @import './components/Button.css';
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
