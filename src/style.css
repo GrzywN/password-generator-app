@@ -1,6 +1,7 @@
 @import './styles/components/Title.css';
 @import './styles/components/GeneratedPasswordField.css';
 @import './styles/components/CopyToClipboardButton.css';
+@import './styles/components/PasswordLengthIndicator.css';
 
 :root {
   --color-neon-green: #a4ffaf;
