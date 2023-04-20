@@ -10,15 +10,15 @@
   <body class="min-h-screen bg-neutral-700 grid place-items-center">
     <main class="max-w-[21.438rem] md:max-w-[33.750rem] w-full">
       <h1 class="Title">Password Generator</h1>
-      <div
-        class="mt-4 h-16 bg-neutral-500 px-4 flex justify-between items-center gap-4 md:mt-6 md:h-20 md:px-8 md:py-[1.188rem]"
-      >
-        <h2 class="text-neutral-50 heading-m opacity-25 md:heading-l" data-pg-generated-password>
-          P4$5W0rD!
-        </h2>
-        <button type="button" class="w-[17.0.312rem] h-5 md:w-[1.312rem] md:h-6" title="Copy to clipboard.">
+      <div class="GeneratedPasswordField">
+        <h2
+          class="GeneratedPasswordField__password"
+          aria-label="Generated password"
+          data-pg-generated-password
+        ></h2>
+        <button class="CopyToClipboardButton" title="Copy to clipboard.">
           <img
-            class="object-cover"
+            class="CopyToClipboardButton__icon"
             src="images/icon-copy.svg"
             alt="Copy the generated password to clipboard."
           />
