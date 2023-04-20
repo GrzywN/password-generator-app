@@ -5,7 +5,7 @@ import {
   handleGeneratePassword,
 } from './state/onEventHandlers'
 import { handleStateChange } from './state/onStateChangeHandlers'
-import './style.css'
+import './styles/main.css'
 
 const passwordPreview = document.querySelector<HTMLHeadingElement>('[data-pg-generated-password]')
 const lengthIndicator = document.querySelector<HTMLSpanElement>('[data-pg-length-indicator]')
