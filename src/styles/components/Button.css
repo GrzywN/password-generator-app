@@ -1,6 +1,7 @@
 .Button {
   font-family: var(--font-monospace);
 
+  cursor: pointer;
   border: none;
 
   font-size: 1rem;
@@ -21,6 +22,16 @@
 
 .Button--primary {
   background-color: var(--color-primary-400);
+
+  transition: var(--transition-hover);
+  transition-property: background-color, color;
+}
+
+.Button--primary:hover {
+  color: var(--color-primary-400);
+  border: 2px solid var(--color-primary-400);
+
+  background-color: transparent;
 }
 
 .Button__icon {

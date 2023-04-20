@@ -22,4 +22,6 @@
   --font-fira-code: 'Fira Code';
 
   --font-monospace: var(--font-fira-code), monospace;
+
+  --transition-hover: 0.2s, cubic-bezier(0.215, 0.61, 0.355, 1);
 }

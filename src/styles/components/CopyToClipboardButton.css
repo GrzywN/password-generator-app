@@ -1,6 +1,9 @@
 .CopyToClipboardButton {
+  color: var(--color-primary-400);
+
   background-color: transparent;
   border: none;
+  cursor: pointer;
 
   box-sizing: content-box;
   padding: 0.75rem;
@@ -10,8 +13,14 @@
   position: absolute;
   top: 50%;
   right: 0;
-
   transform: translateY(-50%) translateX(-1rem);
+
+  transition: var(--transition-hover);
+  transition-property: color;
+}
+
+.CopyToClipboardButton:hover {
+  color: var(--color-white);
 }
 
 .CopyToClipboardButton__icon {
