@@ -7,6 +7,7 @@
 @import './styles/components/Checkbox.css';
 @import './styles/components/InputLabel.css';
 @import './styles/components/PasswordStrengthIndicator.css';
+@import './styles/components/Button.css';
 
 :root {
   --color-neon-green: #a4ffaf;
@@ -37,30 +38,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@layer base {
-  :root {
-    /* These colors are being used for StyledRangeInput styling. */
-
-    --color-primary-400: theme(colors.primary.400);
-    --color-neutral-700: theme(colors.neutral.700);
-  }
-}
-
-@layer components {
-  .heading-l {
-    @apply font-mono font-bold text-[2rem] leading-[2.688rem];
-  }
-
-  .heading-m {
-    @apply font-mono font-bold text-2xl leading-[1.938rem];
-  }
-
-  .body-m {
-    @apply font-mono font-bold text-lg leading-[1.438rem];
-  }
-
-  .body-s {
-    @apply font-mono font-bold text-base leading-[1.312rem];
-  }
-}
