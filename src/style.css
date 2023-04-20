@@ -1,3 +1,29 @@
+:root {
+  --color-neon-green: #a4ffaf;
+  --color-almost-white: #e6e5ea;
+  --color-gray: #817d92;
+  --color-dark-gray: #24232c;
+  --color-very-dark-gray: #18171f;
+  --color-yellow: #f8cd65;
+  --color-orange: #fb7c58;
+  --color-red: #f64a4a;
+  --color-white: #ffffff;
+
+  --color-primary-400: var(--color-neon-green);
+  --color-neutral-50: var(--color-almost-white);
+  --color-neutral-300: var(--color-gray);
+  --color-neutral-500: var(--color-dark-gray);
+  --color-neutral-700: var(--color-very-dark-gray);
+  --color-danger-400: var(--color-yellow);
+  --color-warning-300: var(--color-orange);
+  --color-warning-500: var(--color-red);
+  --color-success-400: var(--color-white);
+
+  --font-fira-code: 'Fira Code';
+
+  --font-monospace: var(--font-fira-code), monospace;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
