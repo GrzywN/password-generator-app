@@ -13,6 +13,7 @@ describe('copyToClipboard', () => {
           return await Promise.resolve({})
         },
       },
+      writable: true,
     })
 
     const text = 'Lorem ipsum dolor sit amet'
@@ -28,6 +29,7 @@ describe('copyToClipboard', () => {
           return await Promise.reject(new Error('Copying text failed.'))
         },
       },
+      writable: true,
     })
 
     const text = 'Lorem ipsum dolor sit amet'
