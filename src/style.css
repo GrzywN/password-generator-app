@@ -2,6 +2,7 @@
 @import './styles/components/GeneratedPasswordField.css';
 @import './styles/components/CopyToClipboardButton.css';
 @import './styles/components/PasswordLengthIndicator.css';
+@import './styles/components/RangeInput.css';
 
 :root {
   --color-neon-green: #a4ffaf;
@@ -69,29 +70,5 @@
     background-image: url('/images/icon-check.svg');
     background-position: center 65%;
     background-repeat: no-repeat;
-  }
-
-  .input-range {
-    @apply appearance-none w-full bg-transparent;
-  }
-
-  .input-range::-webkit-slider-thumb {
-    @apply appearance-none;
-  }
-
-  .input-range::-webkit-slider-thumb {
-    @apply w-7 h-7 rounded-full border-none bg-neutral-50;
-  }
-
-  .input-range::-moz-range-thumb {
-    @apply w-7 h-7 rounded-full border-none bg-neutral-50;
-  }
-
-  .input-range:hover::-webkit-slider-thumb {
-    @apply bg-neutral-700 outline-2 outline-primary-400/100 outline;
-  }
-
-  .input-range:hover::-moz-range-thumb {
-    @apply bg-neutral-700 outline-2 outline-primary-400/100 outline;
   }
 }
