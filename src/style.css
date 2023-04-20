@@ -6,6 +6,7 @@
 @import './styles/components/IncludeFieldsList.css';
 @import './styles/components/Checkbox.css';
 @import './styles/components/InputLabel.css';
+@import './styles/components/PasswordStrengthIndicator.css';
 
 :root {
   --color-neon-green: #a4ffaf;
@@ -26,7 +27,7 @@
   --color-danger-400: var(--color-yellow);
   --color-warning-300: var(--color-orange);
   --color-warning-500: var(--color-red);
-  --color-success-400: var(--color-white);
+  --color-success-400: var(--color-neon-green);
 
   --font-fira-code: 'Fira Code';
 

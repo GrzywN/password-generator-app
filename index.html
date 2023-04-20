@@ -50,57 +50,55 @@
             </li>
           </ul>
         </form>
-        <div
-          class="bg-neutral-700 px-4 py-[0.875rem] h-14 uppercase text-neutral-300 body-s mt-8 flex items-center justify-between md:px-8 md:py-5 md:h-[4.500rem] md:body-m"
-        >
-          Strength
+        <section class="PasswordStrengthIndicator">
+          <h2 class="PasswordStrengthIndicator__title">Strength</h2>
           <div data-pg-password-strength-indicator>
             <template data-pg-password-strength="too-weak">
-              <span class="flex gap-4 text-neutral-50 body-m uppercase md:heading-m">
-                Too weak!
-                <div class="flex gap-2 h-[1.750rem]" aria-hidden="true">
-                  <div class="w-[0.625rem] h-full bg-danger-400"></div>
-                  <div class="w-[0.625rem] h-full border-neutral-50 border-[2px]"></div>
-                  <div class="w-[0.625rem] h-full border-neutral-50 border-[2px]"></div>
-                  <div class="w-[0.625rem] h-full border-neutral-50 border-[2px]"></div>
+              <span class="PasswordStrengthIndicator__indicator">
+                <h3 class="PasswordStrengthIndicator__label">Too weak!</h3>
+                <div class="PasswordStrengthIndicator__bars" aria-hidden="true">
+                  <div class="PasswordStrengthIndicator__bar PasswordStrengthIndicator__bar--too-weak"></div>
+                  <div class="PasswordStrengthIndicator__bar PasswordStrengthIndicator__bar--empty"></div>
+                  <div class="PasswordStrengthIndicator__bar PasswordStrengthIndicator__bar--empty"></div>
+                  <div class="PasswordStrengthIndicator__bar PasswordStrengthIndicator__bar--empty"></div>
                 </div>
               </span>
             </template>
             <template data-pg-password-strength="weak">
-              <span class="flex gap-4 text-neutral-50 body-m uppercase md:heading-m">
-                Weak
-                <div class="flex gap-2 h-[1.750rem]" aria-hidden="true">
-                  <div class="w-[0.625rem] h-full bg-warning-500"></div>
-                  <div class="w-[0.625rem] h-full bg-warning-500"></div>
-                  <div class="w-[0.625rem] h-full border-neutral-50 border-[2px]"></div>
-                  <div class="w-[0.625rem] h-full border-neutral-50 border-[2px]"></div>
+              <span class="PasswordStrengthIndicator__indicator">
+                <h3 class="PasswordStrengthIndicator__label">Weak</h3>
+                <div class="PasswordStrengthIndicator__bars" aria-hidden="true">
+                  <div class="PasswordStrengthIndicator__bar PasswordStrengthIndicator__bar--weak"></div>
+                  <div class="PasswordStrengthIndicator__bar PasswordStrengthIndicator__bar--weak"></div>
+                  <div class="PasswordStrengthIndicator__bar PasswordStrengthIndicator__bar--empty"></div>
+                  <div class="PasswordStrengthIndicator__bar PasswordStrengthIndicator__bar--empty"></div>
                 </div>
               </span>
             </template>
             <template data-pg-password-strength="medium">
-              <span class="flex gap-4 text-neutral-50 body-m uppercase md:heading-m">
-                Medium
-                <div class="flex gap-2 h-[1.750rem]" aria-hidden="true">
-                  <div class="w-[0.625rem] h-full bg-warning-300"></div>
-                  <div class="w-[0.625rem] h-full bg-warning-300"></div>
-                  <div class="w-[0.625rem] h-full bg-warning-300"></div>
-                  <div class="w-[0.625rem] h-full border-neutral-50 border-[2px]"></div>
+              <span class="PasswordStrengthIndicator__indicator">
+                <h3 class="PasswordStrengthIndicator__label">Medium</h3>
+                <div class="PasswordStrengthIndicator__bars" aria-hidden="true">
+                  <div class="PasswordStrengthIndicator__bar PasswordStrengthIndicator__bar--medium"></div>
+                  <div class="PasswordStrengthIndicator__bar PasswordStrengthIndicator__bar--medium"></div>
+                  <div class="PasswordStrengthIndicator__bar PasswordStrengthIndicator__bar--medium"></div>
+                  <div class="PasswordStrengthIndicator__bar PasswordStrengthIndicator__bar--empty"></div>
                 </div>
               </span>
             </template>
             <template data-pg-password-strength="strong">
-              <span class="flex gap-4 text-neutral-50 body-m uppercase md:heading-m">
-                Strong
-                <div class="flex gap-2 h-[1.750rem]" aria-hidden="true">
-                  <div class="w-[0.625rem] h-full bg-primary-400"></div>
-                  <div class="w-[0.625rem] h-full bg-primary-400"></div>
-                  <div class="w-[0.625rem] h-full bg-primary-400"></div>
-                  <div class="w-[0.625rem] h-full bg-primary-400"></div>
+              <span class="PasswordStrengthIndicator__indicator">
+                <h3 class="PasswordStrengthIndicator__label">Strong</h3>
+                <div class="PasswordStrengthIndicator__bars" aria-hidden="true">
+                  <div class="PasswordStrengthIndicator__bar PasswordStrengthIndicator__bar--strong"></div>
+                  <div class="PasswordStrengthIndicator__bar PasswordStrengthIndicator__bar--strong"></div>
+                  <div class="PasswordStrengthIndicator__bar PasswordStrengthIndicator__bar--strong"></div>
+                  <div class="PasswordStrengthIndicator__bar PasswordStrengthIndicator__bar--strong"></div>
                 </div>
               </span>
             </template>
           </div>
-        </div>
+        </section>
         <button
           class="flex justify-center items-center gap-4 mt-4 w-full h-14 md:h-[4.062rem] bg-primary-400 uppercase body-s md:gap-6 md:body-m md:mt-8"
           type="button"
