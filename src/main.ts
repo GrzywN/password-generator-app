@@ -1,12 +1,12 @@
-import { StateManager } from './state/state-manager';
 import {
-  handleSelectedLengthChange,
   handleCheckboxOptionChange,
   handleGeneratePassword,
+  handleSelectedLengthChange,
 } from './state/onEventHandlers';
 import { handleStateChange } from './state/onStateChangeHandlers';
-import type { PasswordGeneratorState } from './types/interfaces/PasswordGeneratorState';
+import { StateManager } from './state/state-manager';
 import './styles/main.css';
+import type { PasswordGeneratorState } from './types/interfaces/PasswordGeneratorState';
 
 const passwordPreview = document.querySelector<HTMLHeadingElement>('[data-pg-generated-password]');
 const lengthIndicator = document.querySelector<HTMLSpanElement>('[data-pg-length-indicator]');

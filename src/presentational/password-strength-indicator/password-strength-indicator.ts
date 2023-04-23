@@ -1,6 +1,6 @@
+import { PasswordStrengths } from '../../types/enums/PasswordStrengths';
 import type { StatefulComponentStrategy } from '../../types/interfaces/ComponentStrategy';
 import type { PasswordGeneratorState } from '../../types/interfaces/PasswordGeneratorState';
-import { PasswordStrengths } from '../../types/enums/PasswordStrengths';
 
 export class PasswordStrengthIndicator implements StatefulComponentStrategy<HTMLDivElement> {
   private readonly element: HTMLDivElement;

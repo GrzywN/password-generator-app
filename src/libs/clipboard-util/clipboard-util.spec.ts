@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-import { describe, it, expect } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import { copyToClipboard } from './clipboard-util';
 
 describe('copyToClipboard', () => {

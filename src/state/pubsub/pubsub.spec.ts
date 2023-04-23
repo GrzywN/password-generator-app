@@ -1,4 +1,4 @@
-import { describe, beforeEach, afterEach, it, vi, expect } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { PubSub } from './pubsub';
 
 describe('PubSub', () => {

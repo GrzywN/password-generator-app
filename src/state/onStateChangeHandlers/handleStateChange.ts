@@ -5,8 +5,8 @@ import { handleIncludeSymbolsCheckboxView } from './handleIncludeSymbolsCheckbox
 import { handleIncludeUppercaseCheckboxView } from './handleIncludeUppercaseCheckboxView';
 import { handleLengthIndicatorView } from './handleLengthIndicatorView';
 import { handlePasswordPreviewView } from './handlePasswordPreviewView';
-import { handleRangeInputView } from './handleRangeInputView';
 import { handlePasswordStrengthIndicatorView } from './handlePasswordStrengthIndicatorView';
+import { handleRangeInputView } from './handleRangeInputView';
 
 export interface DomElements {
   passwordPreview: HTMLElement;

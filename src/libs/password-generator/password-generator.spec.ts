@@ -1,5 +1,5 @@
-import { describe, it, expect } from 'vitest';
-import { shuffle, generatePassword, PasswordGeneratorState, PASSWORD_ERRORS } from './password-generator';
+import { describe, expect, it } from 'vitest';
+import { generatePassword, PasswordGeneratorState, PASSWORD_ERRORS, shuffle } from './password-generator';
 
 describe('generatePassword', () => {
   it('should generate a password with the correct length and characters', () => {

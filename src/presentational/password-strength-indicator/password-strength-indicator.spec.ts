@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-import { describe, beforeEach, it, expect } from 'vitest';
+import { beforeEach, describe, expect, it } from 'vitest';
 import { PasswordStrengths } from '../../types/enums/PasswordStrengths';
 import { PasswordStrengthIndicator } from './password-strength-indicator';
 

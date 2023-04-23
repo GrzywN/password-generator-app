@@ -1,5 +1,5 @@
-import { PasswordGeneratorState } from '../../types/interfaces/PasswordGeneratorState';
 import { PasswordStrengths } from '../../types/enums/PasswordStrengths';
+import { PasswordGeneratorState } from '../../types/interfaces/PasswordGeneratorState';
 
 const PASSWORD_LENGTH_WEAK = 6;
 const PASSWORD_LENGTH_MEDIUM = 10;

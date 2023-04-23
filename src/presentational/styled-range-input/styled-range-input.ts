@@ -1,6 +1,6 @@
-import { RANGE_INPUT_SCALE_BASED_ON_HUNDRED_DIVISION } from '../../utils/constants';
 import { StatefulComponentStrategy } from '../../types/interfaces/ComponentStrategy';
 import { PasswordGeneratorState } from '../../types/interfaces/PasswordGeneratorState';
+import { RANGE_INPUT_SCALE_BASED_ON_HUNDRED_DIVISION } from '../../utils/constants';
 
 export class StyledRangeInput implements StatefulComponentStrategy<HTMLInputElement> {
   private readonly element: HTMLInputElement;

@@ -2,10 +2,10 @@
  * @jest-environment jsdom
  */
 
-import { describe, it, expect, beforeEach, vi } from 'vitest';
-import { StyledRangeInput } from './styled-range-input';
-import { PasswordGeneratorState } from '../../types/interfaces/PasswordGeneratorState';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { PasswordStrengths } from '../../types/enums/PasswordStrengths';
+import { PasswordGeneratorState } from '../../types/interfaces/PasswordGeneratorState';
+import { StyledRangeInput } from './styled-range-input';
 
 describe('StyledRangeInput', () => {
   let inputElement: HTMLInputElement;

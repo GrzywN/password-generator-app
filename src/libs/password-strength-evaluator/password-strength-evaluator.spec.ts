@@ -1,13 +1,13 @@
-import { describe, it, expect } from 'vitest';
-import { PasswordGeneratorState } from '../../types/interfaces/PasswordGeneratorState';
+import { describe, expect, it } from 'vitest';
 import { PasswordStrengths } from '../../types/enums/PasswordStrengths';
+import { PasswordGeneratorState } from '../../types/interfaces/PasswordGeneratorState';
 import {
-  evaluatePasswordStrengthBasedOnState,
   evaluatePasswordStrengthBasedOnPassword,
+  evaluatePasswordStrengthBasedOnState,
   hasLowercaseLetter,
-  hasUppercaseLetter,
   hasNumber,
   hasSymbol,
+  hasUppercaseLetter,
 } from './password-strength-evaluator';
 
 describe('Password Strength Evaluator', () => {

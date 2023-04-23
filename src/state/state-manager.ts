@@ -1,7 +1,7 @@
-import { PubSub } from './pubsub';
-import type { PasswordGeneratorState } from '../types/interfaces/PasswordGeneratorState';
-import { PasswordStrengths } from '../types/enums/PasswordStrengths';
 import { evaluatePasswordStrengthBasedOnState } from '../libs/password-strength-evaluator';
+import { PasswordStrengths } from '../types/enums/PasswordStrengths';
+import type { PasswordGeneratorState } from '../types/interfaces/PasswordGeneratorState';
+import { PubSub } from './pubsub';
 
 export class StateManager {
   private static instance: StateManager | null = null;
