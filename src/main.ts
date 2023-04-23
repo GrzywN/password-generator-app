@@ -5,6 +5,7 @@ import {
   handleGeneratePassword,
 } from './state/onEventHandlers';
 import { handleStateChange } from './state/onStateChangeHandlers';
+import type { PasswordGeneratorState } from './types/interfaces/PasswordGeneratorState';
 import './styles/main.css';
 
 const passwordPreview = document.querySelector<HTMLHeadingElement>('[data-pg-generated-password]');
@@ -28,10 +29,8 @@ if (
   lengthRangeInput == null ||
   strengthIndicatorContainer == null
 ) {
-  throw new Error('main.ts: One of the elements is null. At this point, app would break anyway.');
+  throw new Error('main.ts: One of the elements is null. At this point, this app would break anyway.');
 }
-
-const stateManager: StateManager = StateManager.getInstance();
 
 const handleStateChangeWithElements = handleStateChange({
   passwordPreview,
@@ -44,11 +43,11 @@ const handleStateChangeWithElements = handleStateChange({
   strengthIndicatorContainer,
 });
 
-const handleStateOnInit = (): void => {
-  handleStateChangeWithElements(stateManager.currentState);
+const handleStateOnInit = (state: PasswordGeneratorState): void => {
+  handleStateChangeWithElements(state);
 };
 
-handleStateOnInit();
+const stateManager: StateManager = StateManager.getInstance(handleStateOnInit);
 stateManager.subscribe(handleStateChangeWithElements);
 
 lengthRangeInput.addEventListener('input', handleSelectedLengthChange(stateManager));

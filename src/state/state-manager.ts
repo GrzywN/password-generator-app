@@ -8,7 +8,7 @@ export class StateManager {
   private state: PasswordGeneratorState;
   private readonly pubsub: PubSub;
 
-  private constructor() {
+  private constructor(onInit: (state: PasswordGeneratorState) => void) {
     this.pubsub = new PubSub();
     this.state = new Proxy(
       {
@@ -29,11 +29,13 @@ export class StateManager {
         },
       }
     );
+
+    onInit({ ...this.state });
   }
 
-  public static getInstance(): StateManager {
+  public static getInstance(onInit: (state: PasswordGeneratorState) => void = function () {}): StateManager {
     if (StateManager.instance === null) {
-      StateManager.instance = new StateManager();
+      StateManager.instance = new StateManager(onInit);
     }
 
     return StateManager.instance;
