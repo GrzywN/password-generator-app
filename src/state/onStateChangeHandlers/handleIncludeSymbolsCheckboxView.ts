@@ -1,5 +1,5 @@
-import { PasswordGeneratorState } from '../../types/interfaces/PasswordGeneratorState';
+import { AppState } from '../../types/interfaces/State';
 
-export function handleIncludeSymbolsCheckboxView(state: PasswordGeneratorState, element: HTMLInputElement): void {
+export function handleIncludeSymbolsCheckboxView(state: AppState, element: HTMLInputElement): void {
   element.checked = state.includesSymbols;
 }

@@ -1,17 +1,17 @@
 import { PasswordStrengths } from '../../types/enums/PasswordStrengths';
-import type { StatefulComponentStrategy } from '../../types/interfaces/ComponentStrategy';
-import type { PasswordGeneratorState } from '../../types/interfaces/PasswordGeneratorState';
+import type { Component, withState } from '../../types/interfaces/Component';
+import type { AppState, PasswordGeneratorState, withPasswordStrength } from '../../types/interfaces/State';
 
-export class PasswordStrengthIndicator implements StatefulComponentStrategy<HTMLDivElement> {
+export class PasswordStrengthIndicator implements Component<HTMLDivElement>, withState {
   private readonly element: HTMLDivElement;
-  private state: PasswordGeneratorState;
+  private state: PasswordGeneratorState & withPasswordStrength;
 
   private tooWeakTemplateElement: HTMLTemplateElement;
   private weakTemplateElement: HTMLTemplateElement;
   private mediumTemplateElement: HTMLTemplateElement;
   private strongTemplateElement: HTMLTemplateElement;
 
-  constructor(element: HTMLDivElement, state: PasswordGeneratorState) {
+  constructor(element: HTMLDivElement, state: AppState) {
     this.element = element;
     this.state = state;
   }
@@ -47,7 +47,7 @@ export class PasswordStrengthIndicator implements StatefulComponentStrategy<HTML
     this.strongTemplateElement = strongTemplateElement.cloneNode(true) as HTMLTemplateElement;
   }
 
-  public handleStateChange(state: PasswordGeneratorState): void {
+  public handleStateChange(state: AppState & withPasswordStrength): void {
     this.state = state;
 
     const templateElement = this.selectTemplateElementBasedOnState();

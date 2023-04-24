@@ -1,12 +1,12 @@
-import { StatefulComponentStrategy } from '../../types/interfaces/ComponentStrategy';
-import { PasswordGeneratorState } from '../../types/interfaces/PasswordGeneratorState';
+import { Component, withState } from '../../types/interfaces/Component';
+import { AppState, PasswordGeneratorState } from '../../types/interfaces/State';
 import { RANGE_INPUT_SCALE_BASED_ON_HUNDRED_DIVISION } from '../../utils/constants';
 
-export class StyledRangeInput implements StatefulComponentStrategy<HTMLInputElement> {
+export class StyledRangeInput implements Component<HTMLInputElement>, withState {
   private readonly element: HTMLInputElement;
   private state: PasswordGeneratorState;
 
-  constructor(element: HTMLInputElement, state: PasswordGeneratorState) {
+  constructor(element: HTMLInputElement, state: AppState) {
     this.element = element;
     this.state = state;
   }
@@ -19,7 +19,7 @@ export class StyledRangeInput implements StatefulComponentStrategy<HTMLInputElem
     return this.element;
   }
 
-  public handleStateChange(newState: PasswordGeneratorState): void {
+  public handleStateChange(newState: AppState): void {
     this.state = newState;
 
     this.setBackgroundBasedOnState();

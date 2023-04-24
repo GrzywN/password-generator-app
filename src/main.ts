@@ -1,14 +1,16 @@
 import {
   handleCheckboxOptionChange,
+  handleCopyToClipboard,
   handleGeneratePassword,
+  handleRangeInputKeyboardPress,
   handleSelectedLengthChange,
 } from './state/onEventHandlers';
-import { handleRangeInputKeyboardPress } from './state/onEventHandlers/handleRangeInputKeyboardPress';
 import { handleStateChange } from './state/onStateChangeHandlers';
 import { StateManager } from './state/state-manager';
 import './styles/main.css';
-import type { PasswordGeneratorState } from './types/interfaces/PasswordGeneratorState';
+import type { AppState } from './types/interfaces/State';
 
+const copyToClipboardButton = document.querySelector<HTMLButtonElement>('[data-pg-copy-to-clipboard]');
 const passwordPreview = document.querySelector<HTMLHeadingElement>('[data-pg-generated-password]');
 const lengthIndicator = document.querySelector<HTMLSpanElement>('[data-pg-length-indicator]');
 const includesUppercaseCheckbox = document.querySelector<HTMLInputElement>('[name="includesUppercase"]');
@@ -20,6 +22,7 @@ const lengthRangeInput = document.querySelector<HTMLInputElement>('[data-pg-leng
 const strengthIndicatorContainer = document.querySelector<HTMLDivElement>('[data-pg-password-strength-indicator]');
 
 if (
+  copyToClipboardButton == null ||
   passwordPreview == null ||
   lengthIndicator == null ||
   includesUppercaseCheckbox == null ||
@@ -34,6 +37,7 @@ if (
 }
 
 const handleStateChangeWithElements = handleStateChange({
+  copyToClipboardButton,
   passwordPreview,
   lengthIndicator,
   includesUppercaseCheckbox,
@@ -44,13 +48,14 @@ const handleStateChangeWithElements = handleStateChange({
   strengthIndicatorContainer,
 });
 
-const handleStateOnInit = (state: PasswordGeneratorState): void => {
+const handleStateOnInit = (state: AppState): void => {
   handleStateChangeWithElements(state);
 };
 
 const stateManager: StateManager = StateManager.getInstance(handleStateOnInit);
 stateManager.subscribe(handleStateChangeWithElements);
 
+copyToClipboardButton.addEventListener('click', handleCopyToClipboard(stateManager));
 lengthRangeInput.addEventListener('input', handleSelectedLengthChange(stateManager));
 lengthRangeInput.addEventListener('keydown', handleRangeInputKeyboardPress(stateManager));
 includesUppercaseCheckbox.addEventListener('input', handleCheckboxOptionChange(stateManager));

@@ -1,4 +1,5 @@
-import { PasswordGeneratorState } from '../../types/interfaces/PasswordGeneratorState';
+import { AppState } from '../../types/interfaces/State';
+import { handleCopyToClipboardView } from './handleCopyToClipboardView';
 import { handleIncludeLowercaseCheckboxView } from './handleIncludeLowercaseCheckboxView';
 import { handleIncludeNumbersCheckboxView } from './handleIncludeNumbersCheckboxView';
 import { handleIncludeSymbolsCheckboxView } from './handleIncludeSymbolsCheckboxView';
@@ -9,6 +10,7 @@ import { handlePasswordStrengthIndicatorView } from './handlePasswordStrengthInd
 import { handleRangeInputView } from './handleRangeInputView';
 
 export interface DomElements {
+  copyToClipboardButton: HTMLButtonElement;
   passwordPreview: HTMLElement;
   lengthIndicator: HTMLElement;
   lengthRangeInput: HTMLInputElement;
@@ -19,8 +21,9 @@ export interface DomElements {
   strengthIndicatorContainer: HTMLDivElement;
 }
 
-export function handleStateChange(domElements: DomElements): (state: PasswordGeneratorState) => void {
+export function handleStateChange(domElements: DomElements): (state: AppState) => void {
   const {
+    copyToClipboardButton,
     passwordPreview,
     lengthIndicator,
     lengthRangeInput,
@@ -31,7 +34,8 @@ export function handleStateChange(domElements: DomElements): (state: PasswordGen
     strengthIndicatorContainer,
   } = domElements;
 
-  return (state: PasswordGeneratorState) => {
+  return (state: AppState) => {
+    handleCopyToClipboardView(state, copyToClipboardButton);
     handlePasswordPreviewView(state, passwordPreview);
     handleLengthIndicatorView(state, lengthIndicator);
     handleRangeInputView(state, lengthRangeInput);

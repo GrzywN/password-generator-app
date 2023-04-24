@@ -1,5 +1,5 @@
-import { PasswordGeneratorState } from '../../types/interfaces/PasswordGeneratorState';
+import { AppState } from '../../types/interfaces/State';
 
-export function handleLengthIndicatorView(state: PasswordGeneratorState, element: HTMLElement): void {
+export function handleLengthIndicatorView(state: AppState, element: HTMLElement): void {
   element.innerText = state.selectedLength.toString();
 }

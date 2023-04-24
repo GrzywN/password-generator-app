@@ -1,11 +1,11 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { PasswordStrengths } from '../types/enums/PasswordStrengths';
-import { PasswordGeneratorState } from '../types/interfaces/PasswordGeneratorState';
+import { AppState } from '../types/interfaces/State';
 import { StateManager } from './state-manager';
 
 describe('StateManager', () => {
   let stateManager: StateManager;
-  let initialState: PasswordGeneratorState;
+  let initialState: AppState;
 
   beforeEach(() => {
     stateManager = StateManager.getInstance();

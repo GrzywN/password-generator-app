@@ -1,12 +1,12 @@
 .CopyToClipboardButton {
   color: var(--color-primary-400);
+  transition: var(--transition-hover);
 
   background-color: transparent;
   border: none;
   cursor: pointer;
 
   box-sizing: content-box;
-  padding: 0.75rem;
   width: 1.09375rem;
   height: 1.25rem;
 
@@ -15,12 +15,45 @@
   right: 0;
   transform: translateY(-50%) translateX(-1rem);
 
-  transition: var(--transition-hover);
   transition-property: color;
 }
 
 .CopyToClipboardButton:hover {
   color: var(--color-white);
+}
+
+.CopyToClipboardButton[data-copied='true']::before {
+  font-family: var(--font-monospace);
+  color: var(--color-success-400);
+  content: var(--content-on-copy-success);
+  animation-duration: var(--animation-copy-to-clipboard-duration);
+  animation-timing-function: var(--animation-timing-function);
+
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateX(calc(-100% - 1rem)) translateY(-50%);
+  width: max-content;
+
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 21pt;
+  text-transform: uppercase;
+
+  animation-name: fadeInAndHide;
+}
+
+.CopyToClipboardButton[data-copying-failed='true']::before {
+  font-family: var(--font-monospace);
+  color: var(--color-danger-400);
+  content: var(--content-on-copy-failure);
+
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 21pt;
+  text-transform: uppercase;
 }
 
 .CopyToClipboardButton__icon {
@@ -33,5 +66,15 @@
     height: 1.5rem;
 
     transform: translateY(-50%) translateX(-2rem);
+  }
+
+  .CopyToClipboardButton[data-copied='true']::before {
+    font-size: 1.125rem;
+    line-height: 24pt;
+  }
+
+  .CopyToClipboardButton[data-copying-failed='true']::before {
+    font-size: 1.125rem;
+    line-height: 24pt;
   }
 }

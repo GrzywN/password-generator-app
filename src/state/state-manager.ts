@@ -1,14 +1,14 @@
 import { evaluatePasswordStrengthBasedOnState } from '../libs/password-strength-evaluator';
 import { PasswordStrengths } from '../types/enums/PasswordStrengths';
-import type { PasswordGeneratorState } from '../types/interfaces/PasswordGeneratorState';
+import type { AppState } from '../types/interfaces/State';
 import { PubSub } from './pubsub';
 
 export class StateManager {
   private static instance: StateManager | null = null;
-  private readonly state: PasswordGeneratorState;
+  private readonly state: AppState;
   private readonly pubsub: PubSub;
 
-  private constructor(onInit: (state: PasswordGeneratorState) => void) {
+  private constructor(onInit: (state: AppState) => void) {
     this.pubsub = new PubSub();
     this.state = new Proxy(
       {
@@ -19,6 +19,10 @@ export class StateManager {
         includesSymbols: true,
         currentPassword: '',
         passwordStrength: PasswordStrengths.STRONG,
+        clipboard: {
+          copied: false,
+          copyingFailed: false,
+        },
       },
       {
         set: (state, prop, value) => {
@@ -33,7 +37,7 @@ export class StateManager {
     onInit({ ...this.state });
   }
 
-  public static getInstance(onInit: (state: PasswordGeneratorState) => void = function () {}): StateManager {
+  public static getInstance(onInit: (state: AppState) => void = function () {}): StateManager {
     if (StateManager.instance === null) {
       StateManager.instance = new StateManager(onInit);
     }
@@ -41,15 +45,15 @@ export class StateManager {
     return StateManager.instance;
   }
 
-  public get currentState(): PasswordGeneratorState {
+  public get currentState(): AppState {
     return { ...this.state };
   }
 
-  public subscribe(callback: (state: PasswordGeneratorState) => void): void {
+  public subscribe(callback: (state: AppState) => void): void {
     this.pubsub.subscribe(callback);
   }
 
-  public updateState(newState: Partial<PasswordGeneratorState>): void {
+  public updateState(newState: Partial<AppState>): void {
     for (const prop in newState) {
       this.state[prop] = newState[prop];
     }
@@ -64,7 +68,7 @@ export class StateManager {
     this.updateState({ selectedLength: newLength });
   }
 
-  public handleOptionChange(optionName: keyof PasswordGeneratorState, isChecked: boolean): void {
+  public handleOptionChange(optionName: keyof AppState, isChecked: boolean): void {
     this.updateState({ [optionName]: isChecked });
   }
 

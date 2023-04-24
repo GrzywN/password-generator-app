@@ -32,7 +32,7 @@ function decreaseSelectedLength(stateManager: StateManager, minSelectedLength: n
 
 function increaseSelectedLength(stateManager: StateManager, maxSelectedLength: number): void {
   const currentStateSnapshot = stateManager.currentState;
-  const newLength = currentStateSnapshot.selectedLength + 1;
+  const newLength = Number(currentStateSnapshot.selectedLength) + 1;
 
   if (newLength <= maxSelectedLength) {
     stateManager.handleLengthChange(newLength);

@@ -1,8 +1,5 @@
-import { PasswordGeneratorState } from '../../types/interfaces/PasswordGeneratorState';
+import { AppState } from '../../types/interfaces/State';
 
-export function handleIncludeUppercaseCheckboxView(
-  state: PasswordGeneratorState,
-  element: HTMLInputElement
-): void {
+export function handleIncludeUppercaseCheckboxView(state: AppState, element: HTMLInputElement): void {
   element.checked = state.includesUppercase;
 }

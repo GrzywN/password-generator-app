@@ -1,6 +1,6 @@
-import { PasswordGeneratorState } from '../../types/interfaces/PasswordGeneratorState';
+import { AppState } from '../../types/interfaces/State';
 
-export function handlePasswordPreviewView(state: PasswordGeneratorState, element: HTMLElement): void {
+export function handlePasswordPreviewView(state: AppState, element: HTMLElement): void {
   if (state.currentPassword.length > 0) {
     element.innerText = state.currentPassword;
   }

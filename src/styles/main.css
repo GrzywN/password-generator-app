@@ -1,4 +1,5 @@
 @import './abstracts/variables.css';
+@import './abstracts/animations.css';
 
 @import './base/reset.css';
 @import './base/typography.css';
