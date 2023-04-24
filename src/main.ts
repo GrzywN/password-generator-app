@@ -3,6 +3,7 @@ import {
   handleGeneratePassword,
   handleSelectedLengthChange,
 } from './state/onEventHandlers';
+import { handleRangeInputKeyboardPress } from './state/onEventHandlers/handleRangeInputKeyboardPress';
 import { handleStateChange } from './state/onStateChangeHandlers';
 import { StateManager } from './state/state-manager';
 import './styles/main.css';
@@ -51,6 +52,7 @@ const stateManager: StateManager = StateManager.getInstance(handleStateOnInit);
 stateManager.subscribe(handleStateChangeWithElements);
 
 lengthRangeInput.addEventListener('input', handleSelectedLengthChange(stateManager));
+lengthRangeInput.addEventListener('keydown', handleRangeInputKeyboardPress(stateManager));
 includesUppercaseCheckbox.addEventListener('input', handleCheckboxOptionChange(stateManager));
 includesLowercaseCheckbox.addEventListener('input', handleCheckboxOptionChange(stateManager));
 includesNumbersCheckbox.addEventListener('input', handleCheckboxOptionChange(stateManager));

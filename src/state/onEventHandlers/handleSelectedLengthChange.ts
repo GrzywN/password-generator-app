@@ -5,6 +5,8 @@ export function handleSelectedLengthChange(stateManager: StateManager): (event: 
   return (event: Event): void => {
     const inputValue: number = parseInt((event.target as HTMLInputElement).value);
 
+    console.log(stateManager.currentState.selectedLength);
+
     if (isNaN(inputValue)) {
       return;
     }

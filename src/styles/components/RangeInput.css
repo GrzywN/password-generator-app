@@ -32,18 +32,12 @@
 
 .RangeInput:hover::-webkit-slider-thumb {
   background-color: var(--color-neutral-700);
-  outline-color: var(--color-primary-400);
-
-  outline-style: solid;
-  outline-width: 2px;
+  border: var(--color-primary-400) solid 2px;
 }
 
 .RangeInput:hover::-moz-range-thumb {
   background-color: var(--color-neutral-700);
-  outline-color: var(--color-primary-400);
-
-  outline-style: solid;
-  outline-width: 2px;
+  border: var(--color-primary-400) solid 2px;
 }
 
 @media only screen and (min-width: 640px) {
