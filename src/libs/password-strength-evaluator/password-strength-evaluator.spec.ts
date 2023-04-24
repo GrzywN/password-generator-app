@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { PasswordStrengths } from '../../types/enums/PasswordStrengths';
-import { PasswordGeneratorState } from '../../types/interfaces/PasswordGeneratorState';
+import type { PasswordGeneratorState, withCurrentPassword } from '../../types/interfaces/State';
 import {
   evaluatePasswordStrengthBasedOnPassword,
   evaluatePasswordStrengthBasedOnState,
@@ -13,7 +13,7 @@ import {
 describe('Password Strength Evaluator', () => {
   describe('evaluatePasswordStrengthBasedOnState', () => {
     it("should return 'TOO_WEAK' for passwords with length less than 6", () => {
-      const state: PasswordGeneratorState = {
+      const state: PasswordGeneratorState & withCurrentPassword = {
         selectedLength: 5,
         currentPassword: '',
         includesLowercase: true,
@@ -28,7 +28,7 @@ describe('Password Strength Evaluator', () => {
     });
 
     it("should return 'WEAK' for passwords with length less than 10 and not including all types of characters", () => {
-      const state: PasswordGeneratorState = {
+      const state: PasswordGeneratorState & withCurrentPassword = {
         selectedLength: 8,
         currentPassword: '',
         includesLowercase: true,
@@ -43,7 +43,7 @@ describe('Password Strength Evaluator', () => {
     });
 
     it("should return 'MEDIUM' for passwords with length less than 10 and including all types of characters", () => {
-      const state: PasswordGeneratorState = {
+      const state: PasswordGeneratorState & withCurrentPassword = {
         selectedLength: 9,
         currentPassword: '',
         includesLowercase: true,
@@ -58,7 +58,7 @@ describe('Password Strength Evaluator', () => {
     });
 
     it("should return 'MEDIUM' for passwords with length 10 or more and not including all types of characters", () => {
-      const state: PasswordGeneratorState = {
+      const state: PasswordGeneratorState & withCurrentPassword = {
         selectedLength: 10,
         currentPassword: '',
         includesLowercase: true,
@@ -73,7 +73,7 @@ describe('Password Strength Evaluator', () => {
     });
 
     it("should return 'STRONG' for passwords with length 10 or more and including all types of characters", () => {
-      const state: PasswordGeneratorState = {
+      const state: PasswordGeneratorState & withCurrentPassword = {
         selectedLength: 12,
         currentPassword: '',
         includesLowercase: true,

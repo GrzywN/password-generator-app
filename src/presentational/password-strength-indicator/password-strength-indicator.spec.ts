@@ -4,6 +4,7 @@
 
 import { beforeEach, describe, expect, it } from 'vitest';
 import { PasswordStrengths } from '../../types/enums/PasswordStrengths';
+import { AppState } from '../../types/interfaces/State';
 import { PasswordStrengthIndicator } from './password-strength-indicator';
 
 describe('PasswordStrengthIndicator', () => {
@@ -28,13 +29,17 @@ describe('PasswordStrengthIndicator', () => {
     `;
 
     const initialState = {
-      selectedLength: 4,
+      selectedLength: 10,
       includesUppercase: true,
       includesLowercase: true,
       includesNumbers: true,
       includesSymbols: true,
       currentPassword: '',
-      passwordStrength: PasswordStrengths.TOO_WEAK,
+      passwordStrength: PasswordStrengths.STRONG,
+      clipboard: {
+        copied: false,
+        copyingFailed: false,
+      },
     };
 
     indicator = new PasswordStrengthIndicator(indicatorElement, initialState);
@@ -50,7 +55,7 @@ describe('PasswordStrengthIndicator', () => {
       const expectedIndicator = document.createElement('div');
       expectedIndicator.appendChild(expectedContent);
 
-      const newState = {
+      const newState: AppState = {
         selectedLength: 4,
         includesUppercase: true,
         includesLowercase: true,
@@ -58,6 +63,10 @@ describe('PasswordStrengthIndicator', () => {
         includesSymbols: true,
         currentPassword: '',
         passwordStrength: PasswordStrengths.TOO_WEAK,
+        clipboard: {
+          copied: false,
+          copyingFailed: false,
+        },
       };
       indicator.handleStateChange(newState);
 
@@ -72,7 +81,7 @@ describe('PasswordStrengthIndicator', () => {
       const expectedIndicator = document.createElement('div');
       expectedIndicator.appendChild(expectedContent);
 
-      const newState = {
+      const newState: AppState = {
         selectedLength: 7,
         includesUppercase: true,
         includesLowercase: true,
@@ -80,6 +89,10 @@ describe('PasswordStrengthIndicator', () => {
         includesSymbols: false,
         currentPassword: '',
         passwordStrength: PasswordStrengths.WEAK,
+        clipboard: {
+          copied: false,
+          copyingFailed: false,
+        },
       };
       indicator.handleStateChange(newState);
 
@@ -94,7 +107,7 @@ describe('PasswordStrengthIndicator', () => {
       const expectedIndicator = document.createElement('div');
       expectedIndicator.appendChild(expectedContent);
 
-      const newState = {
+      const newState: AppState = {
         selectedLength: 10,
         includesUppercase: true,
         includesLowercase: true,
@@ -102,6 +115,10 @@ describe('PasswordStrengthIndicator', () => {
         includesSymbols: false,
         currentPassword: '',
         passwordStrength: PasswordStrengths.MEDIUM,
+        clipboard: {
+          copied: false,
+          copyingFailed: false,
+        },
       };
       indicator.handleStateChange(newState);
 
@@ -116,7 +133,7 @@ describe('PasswordStrengthIndicator', () => {
       const expectedIndicator = document.createElement('div');
       expectedIndicator.appendChild(expectedContent);
 
-      const newState = {
+      const newState: AppState = {
         selectedLength: 10,
         includesUppercase: true,
         includesLowercase: true,
@@ -124,6 +141,10 @@ describe('PasswordStrengthIndicator', () => {
         includesSymbols: true,
         currentPassword: '',
         passwordStrength: PasswordStrengths.STRONG,
+        clipboard: {
+          copied: false,
+          copyingFailed: false,
+        },
       };
       indicator.handleStateChange(newState);
 
@@ -131,7 +152,7 @@ describe('PasswordStrengthIndicator', () => {
     });
 
     it('should throw an error if an invalid password strength is provided', () => {
-      const newState = {
+      const newState: AppState = {
         selectedLength: 10,
         includesUppercase: true,
         includesLowercase: true,
@@ -139,6 +160,10 @@ describe('PasswordStrengthIndicator', () => {
         includesSymbols: true,
         currentPassword: '',
         passwordStrength: 'invalid-strength' as PasswordStrengths,
+        clipboard: {
+          copied: false,
+          copyingFailed: false,
+        },
       };
 
       expect(() => {

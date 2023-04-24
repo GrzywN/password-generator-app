@@ -1,10 +1,12 @@
 import { PasswordStrengths } from '../../types/enums/PasswordStrengths';
-import { AppState, withCurrentPassword, withPasswordStrength } from '../../types/interfaces/State';
+import { PasswordGeneratorState, withCurrentPassword } from '../../types/interfaces/State';
 
 const PASSWORD_LENGTH_WEAK = 6;
 const PASSWORD_LENGTH_MEDIUM = 10;
 
-export function evaluatePasswordStrengthBasedOnState(state: AppState & withCurrentPassword): PasswordStrengths {
+export function evaluatePasswordStrengthBasedOnState(
+  state: PasswordGeneratorState & withCurrentPassword
+): PasswordStrengths {
   const {
     selectedLength,
     currentPassword,
@@ -40,14 +42,13 @@ export function evaluatePasswordStrengthBasedOnState(state: AppState & withCurre
 }
 
 export function evaluatePasswordStrengthBasedOnPassword(password: string): PasswordStrengths {
-  const state: AppState & withCurrentPassword & withPasswordStrength = {
+  const state: PasswordGeneratorState & withCurrentPassword = {
     selectedLength: password.length,
     includesLowercase: hasLowercaseLetter(password),
     includesUppercase: hasUppercaseLetter(password),
     includesNumbers: hasNumber(password),
     includesSymbols: hasSymbol(password),
     currentPassword: password,
-    passwordStrength: PasswordStrengths.TOO_WEAK,
   };
 
   return evaluatePasswordStrengthBasedOnState(state);

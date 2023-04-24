@@ -4,13 +4,13 @@
 
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { PasswordStrengths } from '../../types/enums/PasswordStrengths';
-import { PasswordGeneratorState } from '../../types/interfaces/PasswordGeneratorState';
+import { AppState } from '../../types/interfaces/State';
 import { StyledRangeInput } from './styled-range-input';
 
 describe('StyledRangeInput', () => {
   let inputElement: HTMLInputElement;
   let styledRangeInput: StyledRangeInput;
-  let state: PasswordGeneratorState;
+  let state: AppState;
 
   beforeEach(() => {
     inputElement = document.createElement('input');
@@ -23,6 +23,10 @@ describe('StyledRangeInput', () => {
       includesSymbols: true,
       currentPassword: '',
       passwordStrength: PasswordStrengths.STRONG,
+      clipboard: {
+        copied: false,
+        copyingFailed: false,
+      },
     };
 
     styledRangeInput = new StyledRangeInput(inputElement, state);
