@@ -6,9 +6,8 @@ module.exports = {
   extends: [
     'standard-with-typescript',
     'plugin:prettier/recommended',
-    'plugin:tailwindcss/recommended',
   ],
-  plugins: ['prettier', 'tailwindcss'],
+  plugins: ['prettier'],
   overrides: [],
   parserOptions: {
     ecmaVersion: 'latest',
@@ -24,4 +23,4 @@ module.exports = {
       },
     ],
   },
-}
+};
