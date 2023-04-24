@@ -28,11 +28,11 @@
         </div>
         <div class="PasswordGenerator__setup">
           <section class="PasswordLengthIndicator" aria-label="Password length preview">
-            <span class="PasswordLengthIndicator__label">Character Length</span>
-            <span class="PasswordLengthIndicator__count" data-pg-length-indicator>10</span>
+            <div class="PasswordLengthIndicator__label">Character Length</div>
+            <div class="PasswordLengthIndicator__count" data-pg-length-indicator>10</div>
           </section>
           <section aria-label="What the password should contain and how long it should be.">
-            <input class="RangeInput" type="range" min="1" max="100" value="50" data-pg-length-range-input />
+            <input aria-label="Length of the password" class="RangeInput" type="range" min="1" max="100" value="50" data-pg-length-range-input />
             <ul class="IncludeFieldsList">
               <li class="IncludeFieldsList__item">
                 <input class="Checkbox" type="checkbox" id="include-uppercase" name="includesUppercase" />
@@ -56,7 +56,7 @@
             <h2 class="PasswordStrengthIndicator__title">Strength</h2>
             <div data-pg-password-strength-indicator>
               <template data-pg-password-strength="too-weak">
-                <span class="PasswordStrengthIndicator__indicator">
+                <div class="PasswordStrengthIndicator__indicator">
                   <h3 class="PasswordStrengthIndicator__label">Too weak!</h3>
                   <div class="PasswordStrengthIndicator__bars" aria-hidden="true">
                     <div class="PasswordStrengthIndicator__bar PasswordStrengthIndicator__bar--too-weak"></div>
@@ -64,10 +64,10 @@
                     <div class="PasswordStrengthIndicator__bar PasswordStrengthIndicator__bar--empty"></div>
                     <div class="PasswordStrengthIndicator__bar PasswordStrengthIndicator__bar--empty"></div>
                   </div>
-                </span>
+                </div>
               </template>
               <template data-pg-password-strength="weak">
-                <span class="PasswordStrengthIndicator__indicator">
+                <div class="PasswordStrengthIndicator__indicator">
                   <h3 class="PasswordStrengthIndicator__label">Weak</h3>
                   <div class="PasswordStrengthIndicator__bars" aria-hidden="true">
                     <div class="PasswordStrengthIndicator__bar PasswordStrengthIndicator__bar--weak"></div>
@@ -75,10 +75,10 @@
                     <div class="PasswordStrengthIndicator__bar PasswordStrengthIndicator__bar--empty"></div>
                     <div class="PasswordStrengthIndicator__bar PasswordStrengthIndicator__bar--empty"></div>
                   </div>
-                </span>
+                </div>
               </template>
               <template data-pg-password-strength="medium">
-                <span class="PasswordStrengthIndicator__indicator">
+                <div class="PasswordStrengthIndicator__indicator">
                   <h3 class="PasswordStrengthIndicator__label">Medium</h3>
                   <div class="PasswordStrengthIndicator__bars" aria-hidden="true">
                     <div class="PasswordStrengthIndicator__bar PasswordStrengthIndicator__bar--medium"></div>
@@ -86,10 +86,10 @@
                     <div class="PasswordStrengthIndicator__bar PasswordStrengthIndicator__bar--medium"></div>
                     <div class="PasswordStrengthIndicator__bar PasswordStrengthIndicator__bar--empty"></div>
                   </div>
-                </span>
+                </div>
               </template>
               <template data-pg-password-strength="strong">
-                <span class="PasswordStrengthIndicator__indicator">
+                <div class="PasswordStrengthIndicator__indicator">
                   <h3 class="PasswordStrengthIndicator__label">Strong</h3>
                   <div class="PasswordStrengthIndicator__bars" aria-hidden="true">
                     <div class="PasswordStrengthIndicator__bar PasswordStrengthIndicator__bar--strong"></div>
@@ -97,7 +97,7 @@
                     <div class="PasswordStrengthIndicator__bar PasswordStrengthIndicator__bar--strong"></div>
                     <div class="PasswordStrengthIndicator__bar PasswordStrengthIndicator__bar--strong"></div>
                   </div>
-                </span>
+                </div>
               </template>
             </div>
           </section>
