@@ -68,9 +68,7 @@ export class PasswordStrengthIndicator implements StatefulComponentStrategy<HTML
       throw new Error('password-strength-indicator: Wrong password strength provided.');
     }
 
-    const templateElement = strengthAndItsElement[passwordStrength];
-
-    return templateElement;
+    return strengthAndItsElement[passwordStrength];
   }
 
   private displayProperIndicator(templateElement: HTMLTemplateElement): void {

@@ -33,12 +33,13 @@ function generatePassword(state: PasswordGeneratorState): string {
 
   let passwordCharacters = getRequiredIncludedCharacters(state);
 
-  const allSelectedCharacters = [
-    ...(includesUppercase ? [...UPPERCASE_CHARS] : []),
-    ...(includesLowercase ? [...LOWERCASE_CHARS] : []),
-    ...(includesNumbers ? [...NUMBER_CHARS] : []),
-    ...(includesSymbols ? [...SYMBOL_CHARS] : []),
-  ].join('');
+  const allSelectedCharactersList: string[] = [];
+  if (includesUppercase) allSelectedCharactersList.push(UPPERCASE_CHARS);
+  if (includesLowercase) allSelectedCharactersList.push(LOWERCASE_CHARS);
+  if (includesNumbers) allSelectedCharactersList.push(NUMBER_CHARS);
+  if (includesSymbols) allSelectedCharactersList.push(SYMBOL_CHARS);
+
+  const allSelectedCharacters: string = allSelectedCharactersList.join('');
 
   const getRandomCharacter = getRandomCharacterFromSet(allSelectedCharacters);
 
@@ -50,8 +51,7 @@ function generatePassword(state: PasswordGeneratorState): string {
 
   passwordCharacters = shuffle(passwordCharacters);
 
-  const password = passwordCharacters.join('');
-  return password;
+  return passwordCharacters.join('');
 }
 
 function throwErrorIfInvalidState(state: PasswordGeneratorState): void {

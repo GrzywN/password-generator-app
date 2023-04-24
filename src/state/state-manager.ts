@@ -5,7 +5,7 @@ import { PubSub } from './pubsub';
 
 export class StateManager {
   private static instance: StateManager | null = null;
-  private state: PasswordGeneratorState;
+  private readonly state: PasswordGeneratorState;
   private readonly pubsub: PubSub;
 
   private constructor(onInit: (state: PasswordGeneratorState) => void) {

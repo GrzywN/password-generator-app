@@ -47,6 +47,7 @@ export function evaluatePasswordStrengthBasedOnPassword(password: string): Passw
     includesNumbers: hasNumber(password),
     includesSymbols: hasSymbol(password),
     currentPassword: password,
+    passwordStrength: PasswordStrengths.TOO_WEAK,
   };
 
   return evaluatePasswordStrengthBasedOnState(state);

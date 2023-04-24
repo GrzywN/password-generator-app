@@ -10,7 +10,7 @@ describe('copyToClipboard', () => {
     Object.defineProperty(navigator, 'clipboard', {
       value: {
         async writeText() {
-          return await Promise.resolve({});
+          return {};
         },
       },
       writable: true,
@@ -26,7 +26,7 @@ describe('copyToClipboard', () => {
     Object.defineProperty(navigator, 'clipboard', {
       value: {
         async writeText() {
-          return await Promise.reject(new Error('Copying text failed.'));
+          throw new Error('Copying text failed.');
         },
       },
       writable: true,
