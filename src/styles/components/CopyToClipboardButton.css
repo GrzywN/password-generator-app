@@ -48,12 +48,22 @@
   font-family: var(--font-monospace);
   color: var(--color-danger-400);
   content: var(--content-on-copy-failure);
+  animation-duration: var(--animation-copy-to-clipboard-duration);
+  animation-timing-function: var(--animation-timing-function);
+
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateX(calc(-100% - 1rem)) translateY(-50%);
+  width: max-content;
 
   font-size: 1rem;
   font-weight: 700;
   letter-spacing: 0;
   line-height: 21pt;
   text-transform: uppercase;
+
+  animation-name: fadeInAndHide;
 }
 
 .CopyToClipboardButton__icon {
