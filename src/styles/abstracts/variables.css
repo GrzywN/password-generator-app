@@ -14,9 +14,9 @@
   --color-neutral-300: var(--color-gray);
   --color-neutral-500: var(--color-dark-gray);
   --color-neutral-700: var(--color-very-dark-gray);
-  --color-danger-400: var(--color-yellow);
-  --color-warning-300: var(--color-orange);
-  --color-warning-500: var(--color-red);
+  --color-danger-400: var(--color-red);
+  --color-warning-300: var(--color-yellow);
+  --color-warning-500: var(--color-orange);
   --color-success-400: var(--color-neon-green);
 
   --font-fira-code: 'Fira Code';
