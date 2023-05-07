@@ -54,7 +54,6 @@ Users should be able to:
 
 ## TODO
 
-- Improve clipboard behavior on copying empty password.
 - Add ErrorBoundary and some kind of notifier. (Error state)
 - Extract initial AppState to utils, make a wrapper for testing with it.
 - Improve order of CSS properties, make a style guide for that.
