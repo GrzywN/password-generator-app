@@ -56,7 +56,6 @@ Users should be able to:
 
 - Add ErrorBoundary and some kind of notifier. (Error state)
 - Extract initial AppState to utils, make a wrapper for testing with it.
-- Improve order of CSS properties, make a style guide for that.
 - Improve shuffle() function and its specs.
 - Improve solution based on FrontendMentor validator and other people's opinions.
 - Write docs for the entire app flow and how it works.
@@ -64,6 +63,7 @@ Users should be able to:
 ## How to run
 
 Run in development environment:
+
 ```bash
 npm run dev
 ```
@@ -71,11 +71,13 @@ npm run dev
 ## How to test
 
 Test once:
+
 ```bash
 npm run test
 ```
 
 Test in the watch mode:
+
 ```bash
 npm run test:watch
 ```
@@ -83,16 +85,19 @@ npm run test:watch
 ## How to build for production
 
 Make sure everything is fine:
+
 ```bash
 npm run code:check
 ```
 
 Build:
+
 ```bash
 npm run build
 ```
 
 Serve:
+
 ```bash
 npm run serve
 ```
