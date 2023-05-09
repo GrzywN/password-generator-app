@@ -1,4 +1,4 @@
-import { evaluatePasswordStrengthBasedOnState } from '../libs/password-strength-evaluator';
+import { PasswordStrengthEvaluation } from '../services/password-strength-evaluation';
 import { PasswordStrengths } from '../types/enums/PasswordStrengths';
 import type { AppState } from '../types/interfaces/State';
 import { PubSub } from './pubsub';
@@ -7,8 +7,9 @@ export class StateManager {
   private static instance: StateManager | null = null;
   private readonly state: AppState;
   private readonly pubsub: PubSub;
+  private readonly passwordStrengthEvaluation: PasswordStrengthEvaluation;
 
-  private constructor(onInit: (state: AppState) => void) {
+  private constructor(onInit: (state: AppState) => void, passwordStrengthEvaluation: PasswordStrengthEvaluation) {
     this.pubsub = new PubSub();
     this.state = new Proxy(
       {
@@ -34,12 +35,16 @@ export class StateManager {
       }
     );
 
+    this.passwordStrengthEvaluation = passwordStrengthEvaluation;
     onInit({ ...this.state });
   }
 
-  public static getInstance(onInit: (state: AppState) => void = function () {}): StateManager {
+  public static getInstance(
+    onInit: (state: AppState) => void = function () {},
+    passwordStrengthEvaluation: PasswordStrengthEvaluation = new PasswordStrengthEvaluation()
+  ): StateManager {
     if (StateManager.instance === null) {
-      StateManager.instance = new StateManager(onInit);
+      StateManager.instance = new StateManager(onInit, passwordStrengthEvaluation);
     }
 
     return StateManager.instance;
@@ -58,17 +63,8 @@ export class StateManager {
       this.state[prop] = newState[prop];
     }
 
-    const { includesUppercase, includesLowercase, includesNumbers, includesSymbols } = this.state;
-    const doesNotIncludeCharacters =
-      !includesUppercase && !includesLowercase && !includesNumbers && !includesSymbols;
+    const passwordStrength = this.passwordStrengthEvaluation.evaluatePasswordStrength(this.state);
 
-    if (doesNotIncludeCharacters) {
-      this.state.passwordStrength = PasswordStrengths.EMPTY;
-
-      return;
-    }
-
-    const passwordStrength = evaluatePasswordStrengthBasedOnState(this.state);
     if (passwordStrength !== this.state.passwordStrength) {
       this.state.passwordStrength = passwordStrength;
     }

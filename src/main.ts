@@ -1,3 +1,4 @@
+import { PasswordStrengthEvaluation } from './services/password-strength-evaluation';
 import {
   handleCheckboxOptionChange,
   handleCopyToClipboard,
@@ -52,7 +53,7 @@ const handleStateOnInit = (state: AppState): void => {
   handleStateChangeWithElements(state);
 };
 
-const stateManager: StateManager = StateManager.getInstance(handleStateOnInit);
+const stateManager: StateManager = StateManager.getInstance(handleStateOnInit, new PasswordStrengthEvaluation());
 stateManager.subscribe(handleStateChangeWithElements);
 
 copyToClipboardButton.addEventListener('click', handleCopyToClipboard(stateManager));
