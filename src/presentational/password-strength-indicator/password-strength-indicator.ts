@@ -6,6 +6,7 @@ export class PasswordStrengthIndicator implements Component<HTMLDivElement>, wit
   private readonly element: HTMLDivElement;
   private state: PasswordGeneratorState & withPasswordStrength;
 
+  private emptyTemplateElement: HTMLTemplateElement;
   private tooWeakTemplateElement: HTMLTemplateElement;
   private weakTemplateElement: HTMLTemplateElement;
   private mediumTemplateElement: HTMLTemplateElement;
@@ -25,12 +26,14 @@ export class PasswordStrengthIndicator implements Component<HTMLDivElement>, wit
   }
 
   private setTemplateElements(): void {
+    const emptyTemplateElement = this.element.querySelector('[data-pg-password-strength="empty"]');
     const tooWeakTemplateElement = this.element.querySelector('[data-pg-password-strength="too-weak"]');
     const weakTemplateElement = this.element.querySelector('[data-pg-password-strength="weak"]');
     const mediumTemplateElement = this.element.querySelector('[data-pg-password-strength="medium"]');
     const strongTemplateElement = this.element.querySelector('[data-pg-password-strength="strong"]');
 
     if (
+      emptyTemplateElement == null ||
       tooWeakTemplateElement == null ||
       weakTemplateElement == null ||
       mediumTemplateElement == null ||
@@ -41,6 +44,7 @@ export class PasswordStrengthIndicator implements Component<HTMLDivElement>, wit
       );
     }
 
+    this.emptyTemplateElement = emptyTemplateElement.cloneNode(true) as HTMLTemplateElement;
     this.tooWeakTemplateElement = tooWeakTemplateElement.cloneNode(true) as HTMLTemplateElement;
     this.weakTemplateElement = weakTemplateElement.cloneNode(true) as HTMLTemplateElement;
     this.mediumTemplateElement = mediumTemplateElement.cloneNode(true) as HTMLTemplateElement;
@@ -58,6 +62,7 @@ export class PasswordStrengthIndicator implements Component<HTMLDivElement>, wit
     const { passwordStrength } = this.state;
 
     const strengthAndItsElement = {
+      [PasswordStrengths.EMPTY]: this.emptyTemplateElement,
       [PasswordStrengths.TOO_WEAK]: this.tooWeakTemplateElement,
       [PasswordStrengths.WEAK]: this.weakTemplateElement,
       [PasswordStrengths.MEDIUM]: this.mediumTemplateElement,

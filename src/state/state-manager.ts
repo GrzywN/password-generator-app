@@ -58,6 +58,16 @@ export class StateManager {
       this.state[prop] = newState[prop];
     }
 
+    const { includesUppercase, includesLowercase, includesNumbers, includesSymbols } = this.state;
+    const doesNotIncludeCharacters =
+      !includesUppercase && !includesLowercase && !includesNumbers && !includesSymbols;
+
+    if (doesNotIncludeCharacters) {
+      this.state.passwordStrength = PasswordStrengths.EMPTY;
+
+      return;
+    }
+
     const passwordStrength = evaluatePasswordStrengthBasedOnState(this.state);
     if (passwordStrength !== this.state.passwordStrength) {
       this.state.passwordStrength = passwordStrength;

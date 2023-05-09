@@ -54,8 +54,8 @@ Users should be able to:
 
 ## TODO
 
-- Add ErrorBoundary and some kind of notifier. (Error state)
 - Extract initial AppState to utils, make a wrapper for testing with it.
+- Extract password strength indicator/evaluation logic from state manager to a service
 - Improve shuffle() function and its specs.
 - Improve solution based on FrontendMentor validator and other people's opinions.
 - Write docs for the entire app flow and how it works.

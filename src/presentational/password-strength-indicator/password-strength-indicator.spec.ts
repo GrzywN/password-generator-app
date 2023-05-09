@@ -14,6 +14,9 @@ describe('PasswordStrengthIndicator', () => {
   beforeEach(() => {
     indicatorElement = document.createElement('div');
     indicatorElement.innerHTML = `
+      <template data-pg-password-strength="empty">
+        <div class="too-weak-indicator"></div>
+      </template>
       <template data-pg-password-strength="too-weak">
         <div class="too-weak-indicator"></div>
       </template>
@@ -63,6 +66,32 @@ describe('PasswordStrengthIndicator', () => {
         includesSymbols: true,
         currentPassword: '',
         passwordStrength: PasswordStrengths.TOO_WEAK,
+        clipboard: {
+          copied: false,
+          copyingFailed: false,
+        },
+      };
+      indicator.handleStateChange(newState);
+
+      expect(indicatorElement.innerHTML).toEqual(expectedIndicator.innerHTML);
+    });
+
+    it('should set the password strength indicator to "empty"', () => {
+      const templateElement = indicatorElement.querySelector(
+        '[data-pg-password-strength="empty"]'
+      ) as HTMLTemplateElement;
+      const expectedContent = templateElement.content.cloneNode(true);
+      const expectedIndicator = document.createElement('div');
+      expectedIndicator.appendChild(expectedContent);
+
+      const newState: AppState = {
+        selectedLength: 7,
+        includesUppercase: false,
+        includesLowercase: false,
+        includesNumbers: false,
+        includesSymbols: false,
+        currentPassword: '',
+        passwordStrength: PasswordStrengths.EMPTY,
         clipboard: {
           copied: false,
           copyingFailed: false,

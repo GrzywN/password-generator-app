@@ -55,6 +55,17 @@
           <section class="PasswordStrengthIndicator" aria-label="Strength of the newly generated password">
             <h2 class="PasswordStrengthIndicator__title">Strength</h2>
             <div data-pg-password-strength-indicator>
+              <template data-pg-password-strength="empty">
+                <div class="PasswordStrengthIndicator__indicator">
+                  <h3 class="PasswordStrengthIndicator__label">Empty</h3>
+                  <div class="PasswordStrengthIndicator__bars" aria-hidden="true">
+                    <div class="PasswordStrengthIndicator__bar PasswordStrengthIndicator__bar--empty"></div>
+                    <div class="PasswordStrengthIndicator__bar PasswordStrengthIndicator__bar--empty"></div>
+                    <div class="PasswordStrengthIndicator__bar PasswordStrengthIndicator__bar--empty"></div>
+                    <div class="PasswordStrengthIndicator__bar PasswordStrengthIndicator__bar--empty"></div>
+                  </div>
+                </div>
+              </template>
               <template data-pg-password-strength="too-weak">
                 <div class="PasswordStrengthIndicator__indicator">
                   <h3 class="PasswordStrengthIndicator__label">Too weak!</h3>
